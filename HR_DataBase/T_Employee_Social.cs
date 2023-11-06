@@ -19,7 +19,7 @@ namespace HR_DataBase
         public string Emp_Ss_Number { get; set; }
         public Nullable<System.DateTime> Emp_Ss_Date { get; set; }
         public Nullable<System.DateTime> Emp_Ss_End_date { get; set; }
-        public Nullable<decimal> Emp_Ss_Percentage { get; set; }
+        public Nullable<decimal> Emp_Ss_Salarey { get; set; }
         public Nullable<decimal> Emp_Ss_Emp { get; set; }
         public Nullable<decimal> Emp_Ss_Company { get; set; }
         public Nullable<bool> Emp_Ss_State { get; set; }

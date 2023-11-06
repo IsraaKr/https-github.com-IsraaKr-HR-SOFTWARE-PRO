@@ -74,6 +74,12 @@
     <Compile Include="Forms\Employee_Forms\F_Emp_Certificate.Designer.cs">
       <DependentUpon>F_Emp_Certificate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Employee_Forms\F_Emp_Experians.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employee_Forms\F_Emp_Experians.Designer.cs">
+      <DependentUpon>F_Emp_Experians.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Employee_Forms\F_Emp_Files.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="Forms\Employee_Forms\F_Emp_Map.Designer.cs">
       <DependentUpon>F_Emp_Map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Employee_Forms\F_Emp_Social.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Employee_Forms\F_Emp_Social.Designer.cs">
+      <DependentUpon>F_Emp_Social.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Employee_Forms\F_Emp_States.cs">
       <SubType>Form</SubType>
@@ -112,11 +124,17 @@
     <EmbeddedResource Include="Forms\Employee_Forms\F_Emp_Certificate.resx">
       <DependentUpon>F_Emp_Certificate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employee_Forms\F_Emp_Experians.resx">
+      <DependentUpon>F_Emp_Experians.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee_Forms\F_Emp_Files.resx">
       <DependentUpon>F_Emp_Files.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee_Forms\F_Emp_Map.resx">
       <DependentUpon>F_Emp_Map.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Employee_Forms\F_Emp_Social.resx">
+      <DependentUpon>F_Emp_Social.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee_Forms\F_Emp_States.resx">
       <DependentUpon>F_Emp_States.cs</DependentUpon>
@@ -140,8 +158,10 @@
     <None Include="Properties\DataSources\HR_DataBase.T_Companey.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Emploee.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Employee_Certificate.datasource" />
+    <None Include="Properties\DataSources\HR_DataBase.T_Employee_Experiance.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Employee_File.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Employee_Map.datasource" />
+    <None Include="Properties\DataSources\HR_DataBase.T_Employee_Social.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Employee_State.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

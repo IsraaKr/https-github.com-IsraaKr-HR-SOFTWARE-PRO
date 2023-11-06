@@ -40,11 +40,11 @@ namespace HR_DataBase
         public virtual DbSet<T_Employee_File> T_Employee_File { get; set; }
         public virtual DbSet<T_Employee_Map> T_Employee_Map { get; set; }
         public virtual DbSet<T_Employee_Retriment> T_Employee_Retriment { get; set; }
-        public virtual DbSet<T_Employee_Social> T_Employee_Social { get; set; }
         public virtual DbSet<T_Employee_State> T_Employee_State { get; set; }
         public virtual DbSet<T_Salarey_Month> T_Salarey_Month { get; set; }
         public virtual DbSet<T_Salary_Master> T_Salary_Master { get; set; }
         public virtual DbSet<T_User_Type> T_User_Type { get; set; }
         public virtual DbSet<T_Users> T_Users { get; set; }
+        public virtual DbSet<T_Employee_Social> T_Employee_Social { get; set; }
     }
 }

@@ -239,7 +239,7 @@
           <Property Name="Emp_Ss_Number" Type="nvarchar" MaxLength="50" />
           <Property Name="Emp_Ss_Date" Type="date" />
           <Property Name="Emp_Ss_End_date" Type="date" />
-          <Property Name="Emp_Ss_Percentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Ss_Salarey" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Ss_Emp" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Ss_Company" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Ss_State" Type="bit" />
@@ -952,7 +952,7 @@
           <NavigationProperty Name="T_Employee_Experiance" Relationship="Self.FK_T_Employee_Experiance_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_Experiance" />
           <NavigationProperty Name="T_Employee_File" Relationship="Self.FK_T_Employee_File_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_File" />
           <NavigationProperty Name="T_Employee_Retriment" Relationship="Self.FK_T_Employee_Retriment_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_Retriment" />
-          <NavigationProperty Name="T_Employee_Social" Relationship="Self.FK_T_Employee_Social_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_Social" />
+          <NavigationProperty Name="T_Employee_Social" Relationship="SMART_HR_DB_2023Model.FK_T_Employee_Social_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_Social" />
         </EntityType>
         <EntityType Name="T_Employee_Certificate">
           <Key>
@@ -1031,23 +1031,6 @@
           <Property Name="Emp_Re_Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Emp_Id" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="T_Emploee" Relationship="Self.FK_T_Employee_Retriment_T_Emploee" FromRole="T_Employee_Retriment" ToRole="T_Emploee" />
-        </EntityType>
-        <EntityType Name="T_Employee_Social">
-          <Key>
-            <PropertyRef Name="Emp_Ss_ID" />
-          </Key>
-          <Property Name="Emp_Ss_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Emp_Ss_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Emp_Ss_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Emp_Ss_Date" Type="DateTime" Precision="0" />
-          <Property Name="Emp_Ss_End_date" Type="DateTime" Precision="0" />
-          <Property Name="Emp_Ss_Percentage" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Emp_Ss_Emp" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Emp_Ss_Company" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Emp_Ss_State" Type="Boolean" />
-          <Property Name="Emp_Ss_Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Emp_Id" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="T_Emploee" Relationship="Self.FK_T_Employee_Social_T_Emploee" FromRole="T_Employee_Social" ToRole="T_Emploee" />
         </EntityType>
         <EntityType Name="T_Employee_State">
           <Key>
@@ -1398,20 +1381,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_T_Employee_Social_T_Emploee">
-          <End Role="T_Emploee" Type="Self.T_Emploee" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="T_Employee_Social" Type="Self.T_Employee_Social" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Emploee">
-              <PropertyRef Name="Emp_Id" />
-            </Principal>
-            <Dependent Role="T_Employee_Social">
-              <PropertyRef Name="Emp_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_T_Emploeey_Salary_Master_T_Employee_Map">
           <End Role="T_Employee_Map" Type="Self.T_Employee_Map" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1456,7 +1425,6 @@
           <EntitySet Name="T_Employee_File" EntityType="Self.T_Employee_File" />
           <EntitySet Name="T_Employee_Map" EntityType="Self.T_Employee_Map" />
           <EntitySet Name="T_Employee_Retriment" EntityType="Self.T_Employee_Retriment" />
-          <EntitySet Name="T_Employee_Social" EntityType="Self.T_Employee_Social" />
           <EntitySet Name="T_Employee_State" EntityType="Self.T_Employee_State" />
           <EntitySet Name="T_Salarey_Month" EntityType="Self.T_Salarey_Month" />
           <EntitySet Name="T_Salary_Master" EntityType="Self.T_Salary_Master" />
@@ -1546,10 +1514,6 @@
             <End Role="T_Emploee" EntitySet="T_Emploee" />
             <End Role="T_Employee_Retriment" EntitySet="T_Employee_Retriment" />
           </AssociationSet>
-          <AssociationSet Name="FK_T_Employee_Social_T_Emploee" Association="Self.FK_T_Employee_Social_T_Emploee">
-            <End Role="T_Emploee" EntitySet="T_Emploee" />
-            <End Role="T_Employee_Social" EntitySet="T_Employee_Social" />
-          </AssociationSet>
           <AssociationSet Name="FK_T_Emploeey_Salary_Master_T_Employee_Map" Association="Self.FK_T_Emploeey_Salary_Master_T_Employee_Map">
             <End Role="T_Employee_Map" EntitySet="T_Employee_Map" />
             <End Role="T_Salary_Master" EntitySet="T_Salary_Master" />
@@ -1562,6 +1526,11 @@
             <End Role="T_User_Type" EntitySet="T_User_Type" />
             <End Role="T_Users" EntitySet="T_Users" />
           </AssociationSet>
+          <EntitySet Name="T_Employee_Social" EntityType="SMART_HR_DB_2023Model.T_Employee_Social" />
+          <AssociationSet Name="FK_T_Employee_Social_T_Emploee" Association="SMART_HR_DB_2023Model.FK_T_Employee_Social_T_Emploee">
+            <End Role="T_Emploee" EntitySet="T_Emploee" />
+            <End Role="T_Employee_Social" EntitySet="T_Employee_Social" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_T_Users_T_User_Type">
           <End Type="SMART_HR_DB_2023Model.T_User_Type" Role="T_User_Type" Multiplicity="0..1" />
@@ -1572,6 +1541,37 @@
             </Principal>
             <Dependent Role="T_Users">
               <PropertyRef Name="User_T_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_Employee_Social">
+          <Key>
+            <PropertyRef Name="Emp_Ss_ID" />
+          </Key>
+          <Property Name="Emp_Ss_ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Emp_Ss_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Ss_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Ss_Date" Type="DateTime" Precision="0" />
+          <Property Name="Emp_Ss_End_date" Type="DateTime" Precision="0" />
+          <Property Name="Emp_Ss_Salarey" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Ss_Emp" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Ss_Company" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Ss_State" Type="Boolean" />
+          <Property Name="Emp_Ss_Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Id" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="T_Emploee" Relationship="SMART_HR_DB_2023Model.FK_T_Employee_Social_T_Emploee" FromRole="T_Employee_Social" ToRole="T_Emploee" />
+        </EntityType>
+        <Association Name="FK_T_Employee_Social_T_Emploee">
+          <End Type="SMART_HR_DB_2023Model.T_Emploee" Role="T_Emploee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SMART_HR_DB_2023Model.T_Employee_Social" Role="T_Employee_Social" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Emploee">
+              <PropertyRef Name="Emp_Id" />
+            </Principal>
+            <Dependent Role="T_Employee_Social">
+              <PropertyRef Name="Emp_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1821,23 +1821,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_Employee_Social">
-            <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Employee_Social">
-              <MappingFragment StoreEntitySet="T_Employee_Social">
-                <ScalarProperty Name="Emp_Ss_ID" ColumnName="Emp_Ss_ID" />
-                <ScalarProperty Name="Emp_Ss_Code" ColumnName="Emp_Ss_Code" />
-                <ScalarProperty Name="Emp_Ss_Number" ColumnName="Emp_Ss_Number" />
-                <ScalarProperty Name="Emp_Ss_Date" ColumnName="Emp_Ss_Date" />
-                <ScalarProperty Name="Emp_Ss_End_date" ColumnName="Emp_Ss_End_date" />
-                <ScalarProperty Name="Emp_Ss_Percentage" ColumnName="Emp_Ss_Percentage" />
-                <ScalarProperty Name="Emp_Ss_Emp" ColumnName="Emp_Ss_Emp" />
-                <ScalarProperty Name="Emp_Ss_Company" ColumnName="Emp_Ss_Company" />
-                <ScalarProperty Name="Emp_Ss_State" ColumnName="Emp_Ss_State" />
-                <ScalarProperty Name="Emp_Ss_Note" ColumnName="Emp_Ss_Note" />
-                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="T_Employee_State">
             <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Employee_State">
               <MappingFragment StoreEntitySet="T_Employee_State">
@@ -1904,6 +1887,23 @@
                 <ScalarProperty Name="User_Note" ColumnName="User_Note" />
                 <ScalarProperty Name="User_T_Id" ColumnName="User_T_Id" />
                 <ScalarProperty Name="Comp_Id" ColumnName="Comp_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Employee_Social">
+            <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Employee_Social">
+              <MappingFragment StoreEntitySet="T_Employee_Social">
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Emp_Ss_Note" ColumnName="Emp_Ss_Note" />
+                <ScalarProperty Name="Emp_Ss_State" ColumnName="Emp_Ss_State" />
+                <ScalarProperty Name="Emp_Ss_Company" ColumnName="Emp_Ss_Company" />
+                <ScalarProperty Name="Emp_Ss_Emp" ColumnName="Emp_Ss_Emp" />
+                <ScalarProperty Name="Emp_Ss_Salarey" ColumnName="Emp_Ss_Salarey" />
+                <ScalarProperty Name="Emp_Ss_End_date" ColumnName="Emp_Ss_End_date" />
+                <ScalarProperty Name="Emp_Ss_Date" ColumnName="Emp_Ss_Date" />
+                <ScalarProperty Name="Emp_Ss_Number" ColumnName="Emp_Ss_Number" />
+                <ScalarProperty Name="Emp_Ss_Code" ColumnName="Emp_Ss_Code" />
+                <ScalarProperty Name="Emp_Ss_ID" ColumnName="Emp_Ss_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
