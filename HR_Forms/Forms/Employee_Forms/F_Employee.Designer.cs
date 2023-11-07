@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(F_Employee));
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_certificate = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_experiance = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_social = new DevExpress.XtraEditors.SimpleButton();
             this.btn_load_pic = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_files = new DevExpress.XtraEditors.SimpleButton();
             this.btn_save_pic = new DevExpress.XtraEditors.SimpleButton();
             this.pic_photo = new DevExpress.XtraEditors.PictureEdit();
             this.gc = new DevExpress.XtraGrid.GridControl();
@@ -145,11 +145,11 @@
             // 
             // dataLayoutControl1
             // 
-            this.dataLayoutControl1.Controls.Add(this.simpleButton7);
-            this.dataLayoutControl1.Controls.Add(this.simpleButton6);
-            this.dataLayoutControl1.Controls.Add(this.simpleButton5);
+            this.dataLayoutControl1.Controls.Add(this.btn_certificate);
+            this.dataLayoutControl1.Controls.Add(this.btn_experiance);
+            this.dataLayoutControl1.Controls.Add(this.btn_social);
             this.dataLayoutControl1.Controls.Add(this.btn_load_pic);
-            this.dataLayoutControl1.Controls.Add(this.simpleButton3);
+            this.dataLayoutControl1.Controls.Add(this.btn_files);
             this.dataLayoutControl1.Controls.Add(this.btn_save_pic);
             this.dataLayoutControl1.Controls.Add(this.pic_photo);
             this.dataLayoutControl1.Controls.Add(this.gc);
@@ -181,35 +181,38 @@
             this.dataLayoutControl1.TabIndex = 0;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
-            // simpleButton7
+            // btn_certificate
             // 
-            this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
-            this.simpleButton7.Location = new System.Drawing.Point(472, 220);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(157, 36);
-            this.simpleButton7.StyleController = this.dataLayoutControl1;
-            this.simpleButton7.TabIndex = 28;
-            this.simpleButton7.Text = "الشهادات العلمية";
+            this.btn_certificate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
+            this.btn_certificate.Location = new System.Drawing.Point(472, 220);
+            this.btn_certificate.Name = "btn_certificate";
+            this.btn_certificate.Size = new System.Drawing.Size(157, 36);
+            this.btn_certificate.StyleController = this.dataLayoutControl1;
+            this.btn_certificate.TabIndex = 28;
+            this.btn_certificate.Text = "الشهادات العلمية";
+            this.btn_certificate.Click += new System.EventHandler(this.btn_certificate_Click);
             // 
-            // simpleButton6
+            // btn_experiance
             // 
-            this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(323, 220);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(145, 36);
-            this.simpleButton6.StyleController = this.dataLayoutControl1;
-            this.simpleButton6.TabIndex = 27;
-            this.simpleButton6.Text = "الخبرات";
+            this.btn_experiance.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
+            this.btn_experiance.Location = new System.Drawing.Point(323, 220);
+            this.btn_experiance.Name = "btn_experiance";
+            this.btn_experiance.Size = new System.Drawing.Size(145, 36);
+            this.btn_experiance.StyleController = this.dataLayoutControl1;
+            this.btn_experiance.TabIndex = 27;
+            this.btn_experiance.Text = "الخبرات";
+            this.btn_experiance.Click += new System.EventHandler(this.btn_experiance_Click);
             // 
-            // simpleButton5
+            // btn_social
             // 
-            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(179, 220);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(140, 36);
-            this.simpleButton5.StyleController = this.dataLayoutControl1;
-            this.simpleButton5.TabIndex = 26;
-            this.simpleButton5.Text = "الضمان الاجتماعي";
+            this.btn_social.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.btn_social.Location = new System.Drawing.Point(179, 220);
+            this.btn_social.Name = "btn_social";
+            this.btn_social.Size = new System.Drawing.Size(140, 36);
+            this.btn_social.StyleController = this.dataLayoutControl1;
+            this.btn_social.TabIndex = 26;
+            this.btn_social.Text = "الضمان الاجتماعي";
+            this.btn_social.Click += new System.EventHandler(this.btn_social_Click);
             // 
             // btn_load_pic
             // 
@@ -222,15 +225,16 @@
             this.btn_load_pic.Text = "تحميل ";
             this.btn_load_pic.Click += new System.EventHandler(this.btn_load_pic_Click);
             // 
-            // simpleButton3
+            // btn_files
             // 
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(633, 220);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(143, 36);
-            this.simpleButton3.StyleController = this.dataLayoutControl1;
-            this.simpleButton3.TabIndex = 24;
-            this.simpleButton3.Text = "ملفات الموظف";
+            this.btn_files.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.btn_files.Location = new System.Drawing.Point(633, 220);
+            this.btn_files.Name = "btn_files";
+            this.btn_files.Size = new System.Drawing.Size(143, 36);
+            this.btn_files.StyleController = this.dataLayoutControl1;
+            this.btn_files.TabIndex = 24;
+            this.btn_files.Text = "ملفات الموظف";
+            this.btn_files.Click += new System.EventHandler(this.btn_files_Click);
             // 
             // btn_save_pic
             // 
@@ -679,7 +683,7 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.simpleButton3;
+            this.layoutControlItem5.Control = this.btn_files;
             this.layoutControlItem5.Location = new System.Drawing.Point(454, 175);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(147, 40);
@@ -688,7 +692,7 @@
             // 
             // layoutControlItem7
             // 
-            this.layoutControlItem7.Control = this.simpleButton5;
+            this.layoutControlItem7.Control = this.btn_social;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 175);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(144, 40);
@@ -697,7 +701,7 @@
             // 
             // layoutControlItem8
             // 
-            this.layoutControlItem8.Control = this.simpleButton6;
+            this.layoutControlItem8.Control = this.btn_experiance;
             this.layoutControlItem8.Location = new System.Drawing.Point(144, 175);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(149, 40);
@@ -706,7 +710,7 @@
             // 
             // layoutControlItem9
             // 
-            this.layoutControlItem9.Control = this.simpleButton7;
+            this.layoutControlItem9.Control = this.btn_certificate;
             this.layoutControlItem9.Location = new System.Drawing.Point(293, 175);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(161, 40);
@@ -936,11 +940,11 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gv;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton btn_certificate;
+        private DevExpress.XtraEditors.SimpleButton btn_experiance;
+        private DevExpress.XtraEditors.SimpleButton btn_social;
         private DevExpress.XtraEditors.SimpleButton btn_load_pic;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btn_files;
         private DevExpress.XtraEditors.SimpleButton btn_save_pic;
         private DevExpress.XtraEditors.PictureEdit pic_photo;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;

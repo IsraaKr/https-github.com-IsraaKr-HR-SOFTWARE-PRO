@@ -18,6 +18,13 @@ namespace HR_Forms.Forms.Employee_Forms
         {
             InitializeComponent();
         }
+        public F_Emp_Files(decimal emp_id)
+        {
+            InitializeComponent();
+            Get_Data("");
+            Emp_Id_SearchLookUpEdit.EditValue = emp_id;
+            gv.FindFilterText = Emp_Id_SearchLookUpEdit.Text;
+        }
 
         ClsCommander<T_Employee_File> cmdEmpFile = new ClsCommander<T_Employee_File>();
         ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
@@ -27,23 +34,25 @@ namespace HR_Forms.Forms.Employee_Forms
         Boolean Is_Double_Click = false;
         public override void Get_Data(string status_mess)
         {
-            try
+            if (TF_Emp_File != null)
             {
-                clear_data(this.Controls);
-                Is_Double_Click = false;
-                cmdEmpFile = new ClsCommander<T_Employee_File>();
+                try
+                {
+                    clear_data(this.Controls);
+                    Is_Double_Click = false;
+                    cmdEmpFile = new ClsCommander<T_Employee_File>();
 
-               Fill_Graid();
+                    Fill_Graid();
 
-               GetEmp_Data();
-                base.Get_Data(status_mess);
+                    GetEmp_Data();
+                    base.Get_Data(status_mess);
 
+                }
+                catch (Exception ex)
+                {
+                    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
-            }
-
         }
         public override void Insert_Data()
         {

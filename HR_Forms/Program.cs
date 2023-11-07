@@ -18,7 +18,7 @@ namespace HR_Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new F_Emp_Experians());
+            Application.Run(new F_Employee());
         }
     }
 }

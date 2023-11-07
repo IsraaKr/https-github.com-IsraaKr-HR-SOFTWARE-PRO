@@ -24,21 +24,23 @@ namespace HR_Forms.Forms.Employee_Forms
 
         public override void Get_Data(string status_mess)
         {
-            try
+            if (TF_Emp_State != null)
             {
-                clear_data(this.Controls);
-                Is_Double_Click = false;
-                //cmdEmpState = new ClsCommander<T_Employee_State>();
-                TF_Emp_State = cmdEmpState.Get_All().FirstOrDefault();
-                Fill_Graid();   
+                try
+                {
+                    clear_data(this.Controls);
+                    Is_Double_Click = false;
+                    //cmdEmpState = new ClsCommander<T_Employee_State>();
+                    TF_Emp_State = cmdEmpState.Get_All().FirstOrDefault();
+                    Fill_Graid();
 
-                base.Get_Data(status_mess);
+                    base.Get_Data(status_mess);
+                }
+                catch (Exception ex)
+                {
+                    Get_Data(ex.InnerException.InnerException.ToString());
+                }
             }
-            catch (Exception ex)
-            {
-                Get_Data(ex.InnerException.InnerException.ToString());
-            }
-           
         }
 
         private void Set_Auto_Id()

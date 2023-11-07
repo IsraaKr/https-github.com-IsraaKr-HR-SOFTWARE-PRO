@@ -11,34 +11,27 @@ using System.Windows.Forms;
 
 namespace HR_Forms.Forms.Employee_Forms
 {
-    public partial class F_Emp_Experians : F_Master_Inhertanz
+    public partial class F_Emp_Retirment : F_Master_Inhertanz
     {
-        public F_Emp_Experians()
+        public F_Emp_Retirment()
         {
             InitializeComponent();
         }
-        public F_Emp_Experians(decimal emp_id)
-        {
-            InitializeComponent();
-            Get_Data("");
-            Emp_Exp_IdTextEdit.EditValue = emp_id;
-            gv.FindFilterText = Emp_Exp_IdTextEdit.Text;
-        }
-        ClsCommander<T_Employee_Experiance> cmdEmpExperiance = new ClsCommander<T_Employee_Experiance>();
+        ClsCommander<T_Employee_Retriment> cmdEmpRetirment = new ClsCommander<T_Employee_Retriment>();
         ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
 
-      
-        T_Employee_Experiance TF_Emp_Experiance;
+    
+        T_Employee_Retriment TF_Emp_Retirment;
         Boolean Is_Double_Click = false;
         public override void Get_Data(string status_mess)
         {
-            if (TF_Emp_Experiance != null)
+            if (TF_Emp_Retirment != null)
             {
                 try
                 {
                     clear_data(this.Controls);
                     Is_Double_Click = false;
-                    cmdEmpExperiance = new ClsCommander<T_Employee_Experiance>();
+                    cmdEmpRetirment = new ClsCommander<T_Employee_Retriment>();
 
                     Fill_Graid();
 
@@ -58,9 +51,9 @@ namespace HR_Forms.Forms.Employee_Forms
             {
                 if (Validate_Data())
                 {
-                    TF_Emp_Experiance = new T_Employee_Experiance();
+                    TF_Emp_Retirment = new T_Employee_Retriment();
                     Fill_Entitey();
-                    cmdEmpExperiance.Insert_Data(TF_Emp_Experiance);
+                    cmdEmpRetirment.Insert_Data(TF_Emp_Retirment);
                     base.Insert_Data();
                     Get_Data("i");
                 }
@@ -77,10 +70,10 @@ namespace HR_Forms.Forms.Employee_Forms
             {
                 if (Is_Double_Click)
                 {
-                    if (Validate_Data() && gv.RowCount > 0 && TF_Emp_Experiance != null)
+                    if (Validate_Data() && gv.RowCount > 0 && TF_Emp_Retirment != null)
                     {
                         Fill_Entitey();
-                        cmdEmpExperiance.Update_Data(TF_Emp_Experiance);
+                        cmdEmpRetirment.Update_Data(TF_Emp_Retirment);
                         base.Update_Data();
                         Get_Data("u");
                     }
@@ -109,7 +102,7 @@ namespace HR_Forms.Forms.Employee_Forms
                             foreach (int row_id in gv.GetSelectedRows())
                             {
                                 Get_Row_ID(row_id);
-                                cmdEmpExperiance.Delet_Data(TF_Emp_Experiance);
+                                cmdEmpRetirment.Delet_Data(TF_Emp_Retirment);
 
                             }
                             base.Delete_Data();
@@ -140,8 +133,9 @@ namespace HR_Forms.Forms.Employee_Forms
         public override bool Validate_Data()
         {
             int number_of_errores = 0;
-            number_of_errores += Emp_Exp_IdTextEdit.is_text_valid() ? 0 : 1;
-            number_of_errores += Emp_Exp_NameTextEdit.is_text_valid() ? 0 : 1;
+            number_of_errores += Emp_Re_IdTextEdit.is_text_valid() ? 0 : 1;
+            number_of_errores += Emp_Re_NameTextEdit.is_text_valid() ? 0 : 1;
+            number_of_errores += Emp_Re_SalaryTextEdit.is_text_valid() ? 0 : 1;
             if (Emp_IdSearchLookUpEdit.EditValue == null)
             {
                 number_of_errores += 1;
@@ -153,47 +147,45 @@ namespace HR_Forms.Forms.Employee_Forms
 
         public void Fill_Controls()
         {
-            Emp_Exp_IdTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Id.ToString();
-            Emp_Exp_NameTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Name;
-            Emp_Exp_AdressTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Adress;
-            Emp_Exp_DateDateEdit.DateTime = Convert.ToDateTime(TF_Emp_Experiance.Emp_Exp_Date);
-            Emp_Exp_LengthTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Length;
-            Emp_Exp_MajorTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Major;
-            Emp_Exp_StateCheckEdit.Checked = Convert.ToBoolean(TF_Emp_Experiance.Emp_Exp_State);
-            Emp_Exp_noteMemoExEdit.Text = TF_Emp_Experiance.Emp_Exp_note;
-            Emp_IdSearchLookUpEdit.EditValue = TF_Emp_Experiance.Emp_Id;
+            Emp_Re_IdTextEdit.Text = TF_Emp_Retirment.Emp_Re_Id.ToString();
+            Emp_Re_NameTextEdit.Text = TF_Emp_Retirment.Emp_Re_Name;
+            Emp_Re_ResoneTextEdit.Text = TF_Emp_Retirment.Emp_Re_Resone;
+            Emp_Re_DateDateEdit.DateTime = Convert.ToDateTime(TF_Emp_Retirment.Emp_Re_Date);
+            Emp_Re_SalaryTextEdit.Text = TF_Emp_Retirment.Emp_Re_Salary.ToString();
+            Emp_Re_StateCheckEdit.Checked = Convert.ToBoolean(TF_Emp_Retirment.Emp_Re_State);
+            Emp_Re_NoteMemoEdit.Text = TF_Emp_Retirment.Emp_Re_Note;
+            Emp_IdSearchLookUpEdit.EditValue = TF_Emp_Retirment.Emp_Id;
 
         }
         public void Fill_Entitey()
         {
-            TF_Emp_Experiance.Emp_Exp_Id = Convert.ToInt64(Emp_Exp_IdTextEdit.Text);
-            TF_Emp_Experiance.Emp_Exp_Name = Emp_Exp_NameTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_Adress = Emp_Exp_AdressTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_Date = Convert.ToDateTime(Emp_Exp_DateDateEdit.DateTime.ToString("yyyy/MM/dd"));
-            TF_Emp_Experiance.Emp_Exp_Length = Emp_Exp_LengthTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_Major = Emp_Exp_MajorTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_State = Convert.ToBoolean(Emp_Exp_StateCheckEdit.CheckState);
-            TF_Emp_Experiance.Emp_Exp_note = Emp_Exp_noteMemoExEdit.Text;
-            TF_Emp_Experiance.Emp_Id = Convert.ToUInt64(Emp_IdSearchLookUpEdit.EditValue);
+            TF_Emp_Retirment.Emp_Re_Id = Convert.ToInt64(Emp_Re_IdTextEdit.Text);
+            TF_Emp_Retirment.Emp_Re_Name = Emp_Re_NameTextEdit.Text;
+            TF_Emp_Retirment.Emp_Re_Resone = Emp_Re_ResoneTextEdit.Text;
+            TF_Emp_Retirment.Emp_Re_Date = Convert.ToDateTime(Emp_Re_DateDateEdit.DateTime.ToString("yyyy/MM/dd"));
+            TF_Emp_Retirment.Emp_Re_Salary =Convert.ToDecimal( Emp_Re_SalaryTextEdit.Text);
+            TF_Emp_Retirment.Emp_Re_State = Convert.ToBoolean(Emp_Re_StateCheckEdit.CheckState);
+            TF_Emp_Retirment.Emp_Re_Note = Emp_Re_NoteMemoEdit.Text;
+            TF_Emp_Retirment.Emp_Id = Convert.ToUInt64(Emp_IdSearchLookUpEdit.EditValue);
 
         }
         private void Fill_Graid()
         {
-            gc.DataSource = (from e_exp in cmdEmpExperiance.Get_All()
+            gc.DataSource = (from e_retire in cmdEmpRetirment.Get_All()
                              select new
                              {
-                                 id = e_exp.Emp_Exp_Id,
-                                 name = e_exp.Emp_Exp_Name,
-                                 date = e_exp.Emp_Exp_Date,
-                                 length =e_exp.Emp_Exp_Length,
-                                 emp_id = e_exp.Emp_Id,
-                                 emp_name = e_exp.T_Emploee.Emp_F_Name + " " + e_exp.T_Emploee.Emp_L_Name
+                                 id = e_retire.Emp_Re_Id,
+                                 name = e_retire.Emp_Re_Name,
+                                 date = e_retire.Emp_Re_Date,
+                                 salarey = e_retire.Emp_Re_Salary,
+                                 emp_id = e_retire.Emp_Id,
+                                 emp_name = e_retire.T_Emploee.Emp_F_Name + " " + e_retire.T_Emploee.Emp_L_Name
                              }).OrderBy(l_id => l_id.id).ToList();
 
             gv.Columns[0].Caption = "الرقم";
             gv.Columns[1].Caption = "الاسم";
             gv.Columns[2].Caption = "التاريخ";
-            gv.Columns[3].Caption = "المدة";
+            gv.Columns[3].Caption = "راتب التقاعد";
             gv.Columns[4].Caption = "رقم الموظف";
             gv.Columns[5].Caption = "اسم الموظف";
 
@@ -216,8 +208,8 @@ namespace HR_Forms.Forms.Employee_Forms
         }
         private void Set_Auto_Id()
         {
-            var max_id = cmdEmpExperiance.Get_All().Where(c_id => c_id.Emp_Exp_Id == cmdEmpExperiance.Get_All().Max(max => max.Emp_Exp_Id)).FirstOrDefault();
-            Emp_Exp_IdTextEdit.Text = max_id == null ? "1" : (max_id.Emp_Exp_Id + 1).ToString();
+            var max_id = cmdEmpRetirment.Get_All().Where(c_id => c_id.Emp_Re_Id == cmdEmpRetirment.Get_All().Max(max => max.Emp_Re_Id)).FirstOrDefault();
+            Emp_Re_IdTextEdit.Text = max_id == null ? "1" : (max_id.Emp_Re_Id + 1).ToString();
             // Emp_Mp_CodeTextEdit.Text = Emp_Mp_IdTextEdit.Text;
         }
         private void Get_Row_ID(int Row_Id)
@@ -226,12 +218,12 @@ namespace HR_Forms.Forms.Employee_Forms
             if (Row_Id != 0)
             {
                 id = Convert.ToInt64(gv.GetRowCellValue(Row_Id, gv.Columns[0]));
-                TF_Emp_Experiance = cmdEmpExperiance.Get_By(c_id => c_id.Emp_Exp_Id == id).FirstOrDefault();
+                TF_Emp_Retirment = cmdEmpRetirment.Get_By(c_id => c_id.Emp_Re_Id == id).FirstOrDefault();
             }
             else
             {
                 id = Convert.ToInt64(gv.GetRowCellValue(gv.FocusedRowHandle, gv.Columns[0]));
-                TF_Emp_Experiance = cmdEmpExperiance.Get_By(c_id => c_id.Emp_Exp_Id == id).FirstOrDefault();
+                TF_Emp_Retirment = cmdEmpRetirment.Get_By(c_id => c_id.Emp_Re_Id == id).FirstOrDefault();
             }
         }
 
@@ -241,7 +233,7 @@ namespace HR_Forms.Forms.Employee_Forms
             gv.SelectRow(gv.FocusedRowHandle);
 
             Get_Row_ID(0);
-            if (TF_Emp_Experiance != null)
+            if (TF_Emp_Retirment != null)
                 Fill_Controls();
         }
 
@@ -261,5 +253,7 @@ namespace HR_Forms.Forms.Employee_Forms
             else
                 e.DisplayText = "";
         }
+
+    
     }
 }

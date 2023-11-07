@@ -17,29 +17,39 @@ namespace HR_Forms.Forms.Employee_Forms
         {
             InitializeComponent();
         }
+        public F_Emp_Certificate(decimal emp_id)
+        {
+            InitializeComponent();
+            Get_Data("");
+            Emp_IdSearchLookUpEdit.EditValue = emp_id;
+            gv.FindFilterText = Emp_IdSearchLookUpEdit.Text;
+        }
         ClsCommander<T_Employee_Certificate> cmdEmpCertificate = new ClsCommander<T_Employee_Certificate>();
         ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
 
-        string Base64file;
+     
         T_Employee_Certificate TF_Emp_Certificate;
         Boolean Is_Double_Click = false;
         public override void Get_Data(string status_mess)
         {
-            try
+            if (TF_Emp_Certificate != null)
             {
-                clear_data(this.Controls);
-                Is_Double_Click = false;
-                cmdEmpCertificate = new ClsCommander<T_Employee_Certificate>();
+                try
+                {
+                    clear_data(this.Controls);
+                    Is_Double_Click = false;
+                    cmdEmpCertificate = new ClsCommander<T_Employee_Certificate>();
 
-                Fill_Graid();
+                    Fill_Graid();
 
-                GetEmp_Data();
-                base.Get_Data(status_mess);
+                    GetEmp_Data();
+                    base.Get_Data(status_mess);
 
-            }
-            catch (Exception ex)
-            {
-                Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                }
             }
         }
         public override void Insert_Data()

@@ -9,36 +9,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HR_Forms.Forms.Employee_Forms
+namespace HR_Forms.Forms.Salarey_Forms
 {
-    public partial class F_Emp_Experians : F_Master_Inhertanz
+    public partial class F_Salarey_Master : F_Master_Inhertanz
     {
-        public F_Emp_Experians()
+        public F_Salarey_Master()
         {
             InitializeComponent();
         }
-        public F_Emp_Experians(decimal emp_id)
-        {
-            InitializeComponent();
-            Get_Data("");
-            Emp_Exp_IdTextEdit.EditValue = emp_id;
-            gv.FindFilterText = Emp_Exp_IdTextEdit.Text;
-        }
-        ClsCommander<T_Employee_Experiance> cmdEmpExperiance = new ClsCommander<T_Employee_Experiance>();
-        ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
+        ClsCommander<T_Salary_Master> cmdSalMaster = new ClsCommander<T_Salary_Master>();
+        ClsCommander<T_Employee_Map> cmdEmpMap = new ClsCommander<T_Employee_Map>();
 
-      
-        T_Employee_Experiance TF_Emp_Experiance;
+
+        T_Salary_Master TF_Sal_Master;
         Boolean Is_Double_Click = false;
         public override void Get_Data(string status_mess)
         {
-            if (TF_Emp_Experiance != null)
+            if (TF_Sal_Master != null)
             {
                 try
                 {
                     clear_data(this.Controls);
                     Is_Double_Click = false;
-                    cmdEmpExperiance = new ClsCommander<T_Employee_Experiance>();
+                    cmdSalMaster = new ClsCommander<T_Salary_Master>();
 
                     Fill_Graid();
 
@@ -58,9 +51,9 @@ namespace HR_Forms.Forms.Employee_Forms
             {
                 if (Validate_Data())
                 {
-                    TF_Emp_Experiance = new T_Employee_Experiance();
+                    TF_Sal_Master = new T_Salary_Master();
                     Fill_Entitey();
-                    cmdEmpExperiance.Insert_Data(TF_Emp_Experiance);
+                    cmdSalMaster.Insert_Data(TF_Sal_Master);
                     base.Insert_Data();
                     Get_Data("i");
                 }
@@ -77,10 +70,10 @@ namespace HR_Forms.Forms.Employee_Forms
             {
                 if (Is_Double_Click)
                 {
-                    if (Validate_Data() && gv.RowCount > 0 && TF_Emp_Experiance != null)
+                    if (Validate_Data() && gv.RowCount > 0 && TF_Sal_Master != null)
                     {
                         Fill_Entitey();
-                        cmdEmpExperiance.Update_Data(TF_Emp_Experiance);
+                        cmdSalMaster.Update_Data(TF_Sal_Master);
                         base.Update_Data();
                         Get_Data("u");
                     }
@@ -109,7 +102,7 @@ namespace HR_Forms.Forms.Employee_Forms
                             foreach (int row_id in gv.GetSelectedRows())
                             {
                                 Get_Row_ID(row_id);
-                                cmdEmpExperiance.Delet_Data(TF_Emp_Experiance);
+                                cmdSalMaster.Delet_Data(TF_Sal_Master);
 
                             }
                             base.Delete_Data();
@@ -140,12 +133,13 @@ namespace HR_Forms.Forms.Employee_Forms
         public override bool Validate_Data()
         {
             int number_of_errores = 0;
-            number_of_errores += Emp_Exp_IdTextEdit.is_text_valid() ? 0 : 1;
-            number_of_errores += Emp_Exp_NameTextEdit.is_text_valid() ? 0 : 1;
-            if (Emp_IdSearchLookUpEdit.EditValue == null)
+            number_of_errores += Emp_Sal_IdTextEdit.is_text_valid() ? 0 : 1;
+            number_of_errores += Emp_Sal_NameTextEdit.is_text_valid() ? 0 : 1;
+            number_of_errores += Emp_Sal_SalaryTextEdit.is_text_valid() ? 0 : 1;
+            if (Emp_Mp_IdSearchLookUpEdit.EditValue == null)
             {
                 number_of_errores += 1;
-                Emp_IdSearchLookUpEdit.ErrorText = "هذا الحقل مطلوب";
+                Emp_Mp_IdSearchLookUpEdit.ErrorText = "هذا الحقل مطلوب";
             }
 
             return (number_of_errores == 0);
@@ -153,71 +147,67 @@ namespace HR_Forms.Forms.Employee_Forms
 
         public void Fill_Controls()
         {
-            Emp_Exp_IdTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Id.ToString();
-            Emp_Exp_NameTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Name;
-            Emp_Exp_AdressTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Adress;
-            Emp_Exp_DateDateEdit.DateTime = Convert.ToDateTime(TF_Emp_Experiance.Emp_Exp_Date);
-            Emp_Exp_LengthTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Length;
-            Emp_Exp_MajorTextEdit.Text = TF_Emp_Experiance.Emp_Exp_Major;
-            Emp_Exp_StateCheckEdit.Checked = Convert.ToBoolean(TF_Emp_Experiance.Emp_Exp_State);
-            Emp_Exp_noteMemoExEdit.Text = TF_Emp_Experiance.Emp_Exp_note;
-            Emp_IdSearchLookUpEdit.EditValue = TF_Emp_Experiance.Emp_Id;
+            Emp_Sal_IdTextEdit.Text = TF_Sal_Master.Emp_Sal_Id.ToString();
+            Emp_Sal_NameTextEdit.Text = TF_Sal_Master.Emp_Sal_Name;
+            Emp_Sal_SalaryTextEdit.Text = TF_Sal_Master.Emp_Sal_Salary.ToString();
+            Emp_Sal_StateCheckEdit.Checked = Convert.ToBoolean(TF_Sal_Master.Emp_Sal_State);
+            Emp_Sal_NoteMemoEdit.Text = TF_Sal_Master.Emp_Sal_Note;
+            Emp_Mp_IdSearchLookUpEdit.EditValue = TF_Sal_Master.Emp_Mp_Id;
 
         }
         public void Fill_Entitey()
         {
-            TF_Emp_Experiance.Emp_Exp_Id = Convert.ToInt64(Emp_Exp_IdTextEdit.Text);
-            TF_Emp_Experiance.Emp_Exp_Name = Emp_Exp_NameTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_Adress = Emp_Exp_AdressTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_Date = Convert.ToDateTime(Emp_Exp_DateDateEdit.DateTime.ToString("yyyy/MM/dd"));
-            TF_Emp_Experiance.Emp_Exp_Length = Emp_Exp_LengthTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_Major = Emp_Exp_MajorTextEdit.Text;
-            TF_Emp_Experiance.Emp_Exp_State = Convert.ToBoolean(Emp_Exp_StateCheckEdit.CheckState);
-            TF_Emp_Experiance.Emp_Exp_note = Emp_Exp_noteMemoExEdit.Text;
-            TF_Emp_Experiance.Emp_Id = Convert.ToUInt64(Emp_IdSearchLookUpEdit.EditValue);
+            TF_Sal_Master.Emp_Sal_Id = Convert.ToInt64(Emp_Sal_IdTextEdit.Text);
+            TF_Sal_Master.Emp_Sal_Name = Emp_Sal_NameTextEdit.Text;
+            TF_Sal_Master.Emp_Sal_Salary = Convert.ToDecimal(Emp_Sal_SalaryTextEdit.Text);
+            TF_Sal_Master.Emp_Sal_State = Convert.ToBoolean(Emp_Sal_StateCheckEdit.CheckState);
+            TF_Sal_Master.Emp_Sal_Note = Emp_Sal_NoteMemoEdit.Text;
+            TF_Sal_Master.Emp_Mp_Id = Convert.ToUInt64(Emp_Mp_IdSearchLookUpEdit.EditValue);
 
         }
         private void Fill_Graid()
         {
-            gc.DataSource = (from e_exp in cmdEmpExperiance.Get_All()
+            gc.DataSource = (from s_master in cmdSalMaster.Get_All()
                              select new
                              {
-                                 id = e_exp.Emp_Exp_Id,
-                                 name = e_exp.Emp_Exp_Name,
-                                 date = e_exp.Emp_Exp_Date,
-                                 length =e_exp.Emp_Exp_Length,
-                                 emp_id = e_exp.Emp_Id,
-                                 emp_name = e_exp.T_Emploee.Emp_F_Name + " " + e_exp.T_Emploee.Emp_L_Name
+                                 id = s_master.Emp_Sal_Id,
+                                 name = s_master.Emp_Sal_Name,
+                                 salarey = s_master.Emp_Sal_Salary,
+                                 mp_id = s_master.Emp_Mp_Id,
+                                level = s_master.T_Employee_Map.Emp_Mp_Level 
                              }).OrderBy(l_id => l_id.id).ToList();
 
             gv.Columns[0].Caption = "الرقم";
             gv.Columns[1].Caption = "الاسم";
-            gv.Columns[2].Caption = "التاريخ";
-            gv.Columns[3].Caption = "المدة";
-            gv.Columns[4].Caption = "رقم الموظف";
-            gv.Columns[5].Caption = "اسم الموظف";
+            gv.Columns[2].Caption = "الراتب";
+            gv.Columns[3].Caption = "رقم الدرجة";
+            gv.Columns[4].Caption = "الدرجة";
+
 
             gv.BestFitColumns();
         }
         public void GetEmp_Data()
         {
-            var Emp_List = (from Emp in cmdEmploeey.Get_All().Where(es => es.Emp_State == true)
+            var Emp_List = (from Emp_mp in cmdEmpMap.Get_All()
                             select new
                             {
-                                id = Emp.Emp_Id,
-                                name = Emp.Emp_F_Name + " " + Emp.Emp_L_Name,
+                                id = Emp_mp.Emp_Mp_Id,
+                                clas=Emp_mp.Emp_Mp_Class,
+                                leveal = Emp_mp.Emp_Mp_Level ,
                             }).OrderBy(id => id.id);
             if (Emp_List != null && Emp_List.Count() > 0)
             {
-                Emp_IdSearchLookUpEdit.slkp_iniatalize_data(Emp_List, "name", "id");
-                Emp_IdSearchLookUpEdit.Properties.View.Columns[0].Caption = "الرقم";
-                Emp_IdSearchLookUpEdit.Properties.View.Columns[1].Caption = "الاسم ";
+                Emp_Mp_IdSearchLookUpEdit.slkp_iniatalize_data(Emp_List, "leveal", "id");
+                Emp_Mp_IdSearchLookUpEdit.Properties.View.Columns[0].Caption = "الرقم";
+                Emp_Mp_IdSearchLookUpEdit.Properties.View.Columns[1].Caption = "الفئة ";
+                Emp_Mp_IdSearchLookUpEdit.Properties.View.Columns[1].Caption = "الدرجة ";
+
             }
         }
         private void Set_Auto_Id()
         {
-            var max_id = cmdEmpExperiance.Get_All().Where(c_id => c_id.Emp_Exp_Id == cmdEmpExperiance.Get_All().Max(max => max.Emp_Exp_Id)).FirstOrDefault();
-            Emp_Exp_IdTextEdit.Text = max_id == null ? "1" : (max_id.Emp_Exp_Id + 1).ToString();
+            var max_id = cmdSalMaster.Get_All().Where(c_id => c_id.Emp_Sal_Id == cmdSalMaster.Get_All().Max(max => max.Emp_Mp_Id)).FirstOrDefault();
+            Emp_Sal_IdTextEdit.Text = max_id == null ? "1" : (max_id.Emp_Sal_Id + 1).ToString();
             // Emp_Mp_CodeTextEdit.Text = Emp_Mp_IdTextEdit.Text;
         }
         private void Get_Row_ID(int Row_Id)
@@ -226,12 +216,12 @@ namespace HR_Forms.Forms.Employee_Forms
             if (Row_Id != 0)
             {
                 id = Convert.ToInt64(gv.GetRowCellValue(Row_Id, gv.Columns[0]));
-                TF_Emp_Experiance = cmdEmpExperiance.Get_By(c_id => c_id.Emp_Exp_Id == id).FirstOrDefault();
+                TF_Sal_Master = cmdSalMaster.Get_By(c_id => c_id.Emp_Sal_Id == id).FirstOrDefault();
             }
             else
             {
                 id = Convert.ToInt64(gv.GetRowCellValue(gv.FocusedRowHandle, gv.Columns[0]));
-                TF_Emp_Experiance = cmdEmpExperiance.Get_By(c_id => c_id.Emp_Exp_Id == id).FirstOrDefault();
+                TF_Sal_Master = cmdSalMaster.Get_By(c_id => c_id.Emp_Sal_Id == id).FirstOrDefault();
             }
         }
 
@@ -241,7 +231,7 @@ namespace HR_Forms.Forms.Employee_Forms
             gv.SelectRow(gv.FocusedRowHandle);
 
             Get_Row_ID(0);
-            if (TF_Emp_Experiance != null)
+            if (TF_Sal_Master != null)
                 Fill_Controls();
         }
 
@@ -251,12 +241,17 @@ namespace HR_Forms.Forms.Employee_Forms
                 Delete_Data();
         }
 
-        private void Emp_IdSearchLookUpEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+
+        private void Emp_Mp_IdSearchLookUpEdit_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
             if (e.Value != null && e.Value.ToString() != string.Empty)
             {
                 long e_id = Convert.ToInt64(e.Value);
-                e.DisplayText = cmdEmploeey.Get_By(id => id.Emp_Id == e_id).FirstOrDefault().Emp_F_Name;
+                var mp_data = cmdEmpMap.Get_By(x => x.Emp_Mp_Id==e_id).FirstOrDefault();
+                e.DisplayText = mp_data.Emp_Mp_Class;
+                Emp_Sal_NameTextEdit.Text =" راتب " +mp_data.Emp_Mp_Class + " " + mp_data.Emp_Mp_Level;
+                Emp_Sal_SalaryTextEdit.Text = mp_data.Emp_Mp_Salary.ToString();
+
             }
             else
                 e.DisplayText = "";

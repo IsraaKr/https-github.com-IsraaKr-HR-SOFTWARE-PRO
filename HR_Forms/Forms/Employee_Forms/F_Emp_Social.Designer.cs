@@ -179,7 +179,7 @@
             // 
             // Emp_Ss_End_dateDateEdit
             // 
-            this.Emp_Ss_End_dateDateEdit.EditValue = new System.DateTime(2023, 11, 6, 5, 24, 1, 0);
+            this.Emp_Ss_End_dateDateEdit.EditValue = null;
             this.Emp_Ss_End_dateDateEdit.Location = new System.Drawing.Point(491, 141);
             this.Emp_Ss_End_dateDateEdit.Name = "Emp_Ss_End_dateDateEdit";
             this.Emp_Ss_End_dateDateEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
@@ -235,6 +235,7 @@
             // 
             // Emp_Ss_StateCheckEdit
             // 
+            this.Emp_Ss_StateCheckEdit.EditValue = true;
             this.Emp_Ss_StateCheckEdit.Location = new System.Drawing.Point(655, 69);
             this.Emp_Ss_StateCheckEdit.Name = "Emp_Ss_StateCheckEdit";
             this.Emp_Ss_StateCheckEdit.Properties.Caption = "حالة الضمان";
@@ -242,6 +243,7 @@
             this.Emp_Ss_StateCheckEdit.Size = new System.Drawing.Size(121, 20);
             this.Emp_Ss_StateCheckEdit.StyleController = this.dataLayoutControl1;
             this.Emp_Ss_StateCheckEdit.TabIndex = 11;
+            this.Emp_Ss_StateCheckEdit.CheckedChanged += new System.EventHandler(this.Emp_Ss_StateCheckEdit_CheckedChanged);
             // 
             // Emp_Ss_NoteMemoEdit
             // 

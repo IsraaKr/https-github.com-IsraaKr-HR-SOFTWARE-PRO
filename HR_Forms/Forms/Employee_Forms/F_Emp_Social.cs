@@ -17,7 +17,13 @@ namespace HR_Forms.Forms.Employee_Forms
         {
             InitializeComponent();
         }
-
+        public F_Emp_Social(decimal emp_id)
+        {
+            InitializeComponent();
+            Get_Data("");
+            Emp_IdSearchLookUpEdit.EditValue = emp_id;
+            gv.FindFilterText = Emp_IdSearchLookUpEdit.Text;
+        }
         ClsCommander<T_Employee_Social> cmdEmpSocial = new ClsCommander<T_Employee_Social>();
 ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
 
@@ -26,22 +32,26 @@ ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
         Boolean Is_Double_Click = false;
         public override void Get_Data(string status_mess)
         {
-            try
+            if (TF_Emp_Social !=null)
             {
-                clear_data(this.Controls);
-                Is_Double_Click = false;
-                cmdEmpSocial = new ClsCommander<T_Employee_Social>();
+                try
+                {
+                    clear_data(this.Controls);
+                    Is_Double_Click = false;
+                    cmdEmpSocial = new ClsCommander<T_Employee_Social>();
 
-                Fill_Graid();
+                    Fill_Graid();
 
-                GetEmp_Data();
-                base.Get_Data(status_mess);
+                    GetEmp_Data();
+                    base.Get_Data(status_mess);
 
+                }
+                catch (Exception ex)
+                {
+                    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
-            }
+
         }
         public override void Insert_Data()
         {
@@ -162,7 +172,8 @@ ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
             TF_Emp_Social.Emp_Ss_Number = Emp_Ss_NumberTextEdit.Text;
             TF_Emp_Social.Emp_Ss_Salarey =Convert.ToDecimal( Emp_Ss_SalareyTextEdit.Text);
             TF_Emp_Social.Emp_Ss_Date = Convert.ToDateTime(Emp_Ss_DateDateEdit.DateTime.ToString("yyyy/MM/dd"));
-            TF_Emp_Social.Emp_Ss_End_date = Convert.ToDateTime(Emp_Ss_End_dateDateEdit.DateTime.ToString("yyyy/MM/dd"));
+            if (Emp_Ss_StateCheckEdit.Checked == false)
+                 TF_Emp_Social.Emp_Ss_End_date = Convert.ToDateTime(Emp_Ss_End_dateDateEdit.DateTime.ToString("yyyy/MM/dd"));
             TF_Emp_Social.Emp_Ss_Emp = Convert.ToDecimal(Emp_Ss_EmpTextEdit.Text);
             TF_Emp_Social.Emp_Ss_Company = Convert.ToDecimal(Emp_Ss_CompanyTextEdit.Text);
             TF_Emp_Social.Emp_Ss_State = Convert.ToBoolean(Emp_Ss_StateCheckEdit.CheckState);
@@ -255,6 +266,16 @@ ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
             }
             else
                 e.DisplayText = "";
+        }
+
+        private void Emp_Ss_StateCheckEdit_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Emp_Ss_StateCheckEdit.Checked==true)
+            {
+                Emp_Ss_End_dateDateEdit.ReadOnly = true;
+            }
+            else
+                Emp_Ss_End_dateDateEdit.ReadOnly = false;
         }
     }
 }

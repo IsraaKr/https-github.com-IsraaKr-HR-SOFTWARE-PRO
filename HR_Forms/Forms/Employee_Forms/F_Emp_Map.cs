@@ -24,20 +24,23 @@ namespace HR_Forms.Forms.Employee_Forms
 
         public override void Get_Data(string status_mess)
         {
-            try
+            if (TF_Emp_Map != null)
             {
-                clear_data(this.Controls);
-                Is_Double_Click = false;
-                cmd_Emp_Map = new ClsCommander<T_Employee_Map>();
-                TF_Emp_Map = cmd_Emp_Map.Get_All().FirstOrDefault();
-                Fill_Graid();
+                try
+                {
+                    clear_data(this.Controls);
+                    Is_Double_Click = false;
+                    cmd_Emp_Map = new ClsCommander<T_Employee_Map>();
+                    TF_Emp_Map = cmd_Emp_Map.Get_All().FirstOrDefault();
+                    Fill_Graid();
 
-                base.Get_Data(status_mess);
+                    base.Get_Data(status_mess);
 
-            }
-            catch (Exception ex)
-            {
-                Get_Data(ex.InnerException.InnerException.ToString() +"/" +ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                }
             }
         }
         public override void Insert_Data()

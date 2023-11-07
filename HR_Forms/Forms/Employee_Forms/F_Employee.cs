@@ -32,24 +32,26 @@ namespace HR_Forms.Forms.Employee_Forms
         #region override
         public override void Get_Data(string status_mess)
         {
-            try
+            if (TF_Emploee != null)
             {
-                clear_data(this.Controls);
-                Is_Double_Click = false;
-                cmdEmploeey = new ClsCommander<T_Emploee>();
-                cmdEmpState = new ClsCommander<T_Employee_State>();
-                cmdEmpMap = new ClsCommander<T_Employee_Map>();
-                Fill_Grid();
-                base.Get_Data(status_mess);
+                try
+                {
+                    clear_data(this.Controls);
+                    Is_Double_Click = false;
+                    cmdEmploeey = new ClsCommander<T_Emploee>();
+                    cmdEmpState = new ClsCommander<T_Employee_State>();
+                    cmdEmpMap = new ClsCommander<T_Employee_Map>();
+                    Fill_Grid();
+                    base.Get_Data(status_mess);
 
-                GetEmp_Map_Data();
-                GetEmp_State_Data();
+                    GetEmp_Map_Data();
+                    GetEmp_State_Data();
+                }
+                catch (Exception ex)
+                {
+                    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
-            }
-
         }
         public override void Insert_Data()
         {
@@ -379,16 +381,63 @@ namespace HR_Forms.Forms.Employee_Forms
         }
         public Image from_bytes_toImage(string path)
         {
-            byte[] bytes = Convert.FromBase64String(path);
-            Image im;
-            using (MemoryStream ms = new MemoryStream(bytes))
+            if (path != null)
             {
-                im = Image.FromStream(ms);
-            }
+                byte[] bytes = Convert.FromBase64String(path);
+                Image im;
+                using (MemoryStream ms = new MemoryStream(bytes))
+                {
+                    im = Image.FromStream(ms);
+                }
 
-            return im;
+                return im;
+            }
+            return null;
         }
 
+
         #endregion
+
+        private void btn_files_Click(object sender, EventArgs e)
+        {
+            F_Emp_Files f;
+            if (TF_Emploee !=null)
+                 f = new F_Emp_Files(TF_Emploee.Emp_Id);
+                      
+            else
+                f = new F_Emp_Files();
+            f.ShowDialog();
+
+        }
+
+        private void btn_certificate_Click(object sender, EventArgs e)
+        {
+            F_Emp_Certificate f;
+            if (TF_Emploee != null)
+                f = new F_Emp_Certificate(TF_Emploee.Emp_Id);
+            else
+                f = new F_Emp_Certificate();
+            f.ShowDialog();
+        }
+
+            private void btn_experiance_Click(object sender, EventArgs e)
+        {
+            F_Emp_Experians f;
+            if (TF_Emploee != null)
+                f = new F_Emp_Experians(TF_Emploee.Emp_Id);
+            else
+                f = new F_Emp_Experians();
+            f.ShowDialog();
+        }
+
+        private void btn_social_Click(object sender, EventArgs e)
+        {
+            F_Emp_Social f;
+            if (TF_Emploee != null)
+                f = new F_Emp_Social(TF_Emploee.Emp_Id);
+            else
+                f = new F_Emp_Social();
+            f.ShowDialog();
+        }
     }
 }
