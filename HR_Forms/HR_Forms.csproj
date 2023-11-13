@@ -62,6 +62,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="C_Master.cs" />
+    <Compile Include="Forms\Attend_Forms\F_Attend.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Attend_Forms\F_Attend.Designer.cs">
+      <DependentUpon>F_Attend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Attend_Forms\F_Attend_Day.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Attend_Forms\F_Attend_Day.Designer.cs">
+      <DependentUpon>F_Attend_Day.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Attend_Forms\F_Attend_Month.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Attend_Forms\F_Attend_Month.Designer.cs">
+      <DependentUpon>F_Attend_Month.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Employee_Forms\F_Employee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +140,12 @@
     <Compile Include="Forms\Salarey_Forms\F_Salarey_Master.Designer.cs">
       <DependentUpon>F_Salarey_Master.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Salarey_Forms\F_Salarey_Month.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Salarey_Forms\F_Salarey_Month.Designer.cs">
+      <DependentUpon>F_Salarey_Month.cs</DependentUpon>
+    </Compile>
     <Compile Include="F_Master_Inhertanz.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Salarey_Forms\F_Salarey_Master.resx">
       <DependentUpon>F_Salarey_Master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Salarey_Forms\F_Salarey_Month.resx">
+      <DependentUpon>F_Salarey_Month.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Master_Inhertanz.resx">
       <DependentUpon>F_Master_Inhertanz.cs</DependentUpon>

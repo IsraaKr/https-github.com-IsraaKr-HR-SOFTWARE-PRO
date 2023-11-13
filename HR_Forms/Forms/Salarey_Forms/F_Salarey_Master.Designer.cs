@@ -149,7 +149,6 @@
             this.Emp_Sal_SalaryTextEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.Emp_Sal_SalaryTextEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.Emp_Sal_SalaryTextEdit.Properties.Mask.EditMask = "G";
-            this.Emp_Sal_SalaryTextEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.Emp_Sal_SalaryTextEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.Emp_Sal_SalaryTextEdit.Size = new System.Drawing.Size(194, 20);
             this.Emp_Sal_SalaryTextEdit.StyleController = this.dataLayoutControl1;
@@ -311,6 +310,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataLayoutControl1);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "F_Salarey_Master";
             this.Text = "F_Salarey_Master";
             this.Controls.SetChildIndex(this.dataLayoutControl1, 0);

@@ -115,6 +115,9 @@ namespace HR_Forms.Forms.Salarey_Forms
             }
             catch (Exception ex)
             {
+                if (ex.InnerException.InnerException.ToString().Contains("Fk_Emp_Month"))
+                    C_Master.Warning_Massege_Box("العنصر مرتبط مع راتب شهري لا يمكن حذفه");
+               else
                 Get_Data(ex.InnerException.InnerException.ToString());
             }
         }

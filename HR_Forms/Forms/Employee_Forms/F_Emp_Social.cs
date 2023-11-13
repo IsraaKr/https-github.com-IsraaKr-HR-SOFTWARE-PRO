@@ -27,7 +27,7 @@ namespace HR_Forms.Forms.Employee_Forms
         ClsCommander<T_Employee_Social> cmdEmpSocial = new ClsCommander<T_Employee_Social>();
 ClsCommander<T_Emploee> cmdEmploeey = new ClsCommander<T_Emploee>();
 
-        string Base64file;
+     
         T_Employee_Social TF_Emp_Social;
         Boolean Is_Double_Click = false;
         public override void Get_Data(string status_mess)
