@@ -154,6 +154,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Attend_Forms\F_Attend.resx">
+      <DependentUpon>F_Attend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Attend_Forms\F_Attend_Day.resx">
+      <DependentUpon>F_Attend_Day.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Attend_Forms\F_Attend_Month.resx">
+      <DependentUpon>F_Attend_Month.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Employee_Forms\F_Employee.resx">
       <DependentUpon>F_Employee.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +209,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\HR_DataBase.T_Attend.datasource" />
+    <None Include="Properties\DataSources\HR_DataBase.T_Attend_Day.datasource" />
+    <None Include="Properties\DataSources\HR_DataBase.T_Attend_Month.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Companey.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Emploee.datasource" />
     <None Include="Properties\DataSources\HR_DataBase.T_Employee_Certificate.datasource" />

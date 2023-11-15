@@ -1,5 +1,7 @@
 ﻿using HR_Forms.Forms;
+using HR_Forms.Forms.Attend_Forms;
 using HR_Forms.Forms.Employee_Forms;
+using HR_Forms.Forms.Salarey_Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace HR_Forms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new F_Employee());
+            Application.Run(new F_Attend_Month());
         }
     }
 }
