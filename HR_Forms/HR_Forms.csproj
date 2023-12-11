@@ -134,6 +134,18 @@
     <Compile Include="Forms\F_Companey.Designer.cs">
       <DependentUpon>F_Companey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Lists_Forms\F_Emp_Att_Salarey_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lists_Forms\F_Emp_Att_Salarey_List.Designer.cs">
+      <DependentUpon>F_Emp_Att_Salarey_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lists_Forms\F_Emp_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lists_Forms\F_Emp_List.Designer.cs">
+      <DependentUpon>F_Emp_List.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Salarey_Forms\F_Salarey_Master.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +163,18 @@
     </Compile>
     <Compile Include="F_Master_Inhertanz.Designer.cs">
       <DependentUpon>F_Master_Inhertanz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Master_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Master_List.Designer.cs">
+      <DependentUpon>F_Master_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Master_Report_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Master_Report_List.Designer.cs">
+      <DependentUpon>F_Master_Report_List.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,6 +214,9 @@
     <EmbeddedResource Include="Forms\F_Companey.resx">
       <DependentUpon>F_Companey.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lists_Forms\F_Emp_Att_Salarey_List.resx">
+      <DependentUpon>F_Emp_Att_Salarey_List.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Salarey_Forms\F_Salarey_Master.resx">
       <DependentUpon>F_Salarey_Master.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,6 +225,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_Master_Inhertanz.resx">
       <DependentUpon>F_Master_Inhertanz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Master_List.resx">
+      <DependentUpon>F_Master_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Master_Report_List.resx">
+      <DependentUpon>F_Master_Report_List.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -241,5 +274,6 @@
       <Name>HR_DataBase</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

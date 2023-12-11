@@ -21,6 +21,7 @@ namespace HR_DataBase
         void Insert_Data(TEntity entity);//لايعيد قيمة و نرسل له براميتر من نوع تي انتتي
         void Update_Data(TEntity entity);
         void Delet_Data(TEntity entity);
+        void Detached_Data(TEntity entity);//ترك الانتتي الذي كنا فيه ليمسك انتتي تاني
         IEnumerable<TEntity> Get_All();//يعيد قيمة
                                        //ايمبريل
                                        //هذا النوع لانها تعيد قيمة هذه خاصة بالبيانات العائدة من النتتي فريمورك

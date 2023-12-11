@@ -261,5 +261,10 @@ namespace HR_Forms.Forms.Employee_Forms
             else
                 e.DisplayText = "";
         }
+
+        private void Emp_Exp_DateDateEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

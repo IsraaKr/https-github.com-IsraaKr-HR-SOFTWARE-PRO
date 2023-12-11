@@ -27,6 +27,9 @@ namespace HR_DataBase
         public Nullable<bool> Emp_Sal_State { get; set; }
         public string Emp_Sal_Note { get; set; }
         public Nullable<decimal> Emp_Mp_Id { get; set; }
+        public Nullable<decimal> Emp_Sal_M_Bonas { get; set; }
+        public Nullable<decimal> Emp_Sal_M_Minos { get; set; }
+        public Nullable<decimal> Emp_Sal_Net { get; set; }
     
         public virtual T_Employee_Map T_Employee_Map { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

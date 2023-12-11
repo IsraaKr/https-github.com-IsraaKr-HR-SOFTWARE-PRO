@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Emp_Att_Id" />
           </Key>
-          <Property Name="Emp_Att_Id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_Att_Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Emp_Att_Code" Type="nvarchar" MaxLength="50" />
           <Property Name="Emp_Att_Date" Type="date" />
           <Property Name="Emp_Att_Houer" Type="int" />
@@ -147,6 +147,7 @@
           <Property Name="Emp_L_Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Emp_Nation_num" Type="nvarchar" MaxLength="100" />
           <Property Name="Emp_B_Date" Type="date" />
+          <Property Name="Emp_S_Date" Type="date" />
           <Property Name="Emp_Age" Type="int" />
           <Property Name="Emp_Gender" Type="int" />
           <Property Name="Emp_Address" Type="nvarchar(max)" />
@@ -266,9 +267,14 @@
           <Property Name="Emp_Mnth_Sal_Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Emp_Mnth_Sal_Date" Type="date" />
           <Property Name="Emp_Mnth_Sal_Salary" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Mnth_Sal_Day_Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Emp_Mnth_Sal_Bonas_Day" Type="int" />
           <Property Name="Emp_Mnth_Sal_Bonas" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Mnth_Sal_Minous_Day" Type="int" />
           <Property Name="Emp_Mnth_Sal_Minose" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Mnth_Sal_SS_Minous" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Mnth_Sal_Adv" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Mnth_Sal_Debt" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Mnth_Sal_Total" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Mnth_Sal_State" Type="bit" />
           <Property Name="Emp_Mnth_Sal_Note" Type="nvarchar(max)" />
@@ -283,6 +289,9 @@
           <Property Name="Emp_Sal_Code" Type="nvarchar" MaxLength="50" />
           <Property Name="Emp_Sal_Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Emp_Sal_Salary" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Sal_M_Bonas" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Sal_M_Minos" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Sal_Net" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Emp_Sal_State" Type="bit" />
           <Property Name="Emp_Sal_Note" Type="nvarchar(max)" />
           <Property Name="Emp_Mp_Id" Type="numeric" Precision="18" Scale="0" />
@@ -309,6 +318,21 @@
           <Property Name="User_Note" Type="nvarchar(max)" />
           <Property Name="User_T_Id" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Comp_Id" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SMART_HR_DB_2023.dbo.V_Emp_Month_Atend_Salarey' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Emp_Month_Atend_Salarey">
+          <Key>
+            <PropertyRef Name="Emp_Att_M_Id" />
+            <PropertyRef Name="Emp_Id" />
+          </Key>
+          <Property Name="Emp_Att_M_Id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_Att_M_Month_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="yeaar" Type="int" />
+          <Property Name="Emp_Att_M_Day_Count" Type="int" />
+          <Property Name="Emp_Id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="emp_name" Type="nvarchar" MaxLength="201" />
+          <Property Name="total_hours" Type="int" />
         </EntityType>
         <Association Name="FK_T_Attend_T_Attend_Day">
           <End Role="T_Attend_Day" Type="Self.T_Attend_Day" Multiplicity="0..1">
@@ -662,6 +686,17 @@
           <EntitySet Name="T_Salary_Master" EntityType="Self.T_Salary_Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_User_Type" EntityType="Self.T_User_Type" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="T_Users" EntityType="Self.T_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Emp_Month_Atend_Salarey" EntityType="Self.V_Emp_Month_Atend_Salarey" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Emp_Month_Atend_Salarey].[Emp_Att_M_Id] AS [Emp_Att_M_Id], 
+    [V_Emp_Month_Atend_Salarey].[Emp_Att_M_Month_Name] AS [Emp_Att_M_Month_Name], 
+    [V_Emp_Month_Atend_Salarey].[yeaar] AS [yeaar], 
+    [V_Emp_Month_Atend_Salarey].[Emp_Att_M_Day_Count] AS [Emp_Att_M_Day_Count], 
+    [V_Emp_Month_Atend_Salarey].[Emp_Id] AS [Emp_Id], 
+    [V_Emp_Month_Atend_Salarey].[emp_name] AS [emp_name], 
+    [V_Emp_Month_Atend_Salarey].[total_hours] AS [total_hours]
+    FROM [dbo].[V_Emp_Month_Atend_Salarey] AS [V_Emp_Month_Atend_Salarey]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_T_Attend_T_Attend_Day" Association="Self.FK_T_Attend_T_Attend_Day">
             <End Role="T_Attend_Day" EntitySet="T_Attend_Day" />
             <End Role="T_Attend" EntitySet="T_Attend" />
@@ -767,21 +802,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SMART_HR_DB_2023Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="T_Attend">
-          <Key>
-            <PropertyRef Name="Emp_Att_Id" />
-          </Key>
-          <Property Name="Emp_Att_Id" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="Emp_Att_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Emp_Att_Date" Type="DateTime" Precision="0" />
-          <Property Name="Emp_Att_Houer" Type="Int32" />
-          <Property Name="Emp_Att_State" Type="Boolean" />
-          <Property Name="Emp_Att_Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Emp_Id" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Emp_Att_D_Id" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="T_Attend_Day" Relationship="Self.FK_T_Attend_T_Attend_Day" FromRole="T_Attend" ToRole="T_Attend_Day" />
-          <NavigationProperty Name="T_Emploee" Relationship="Self.FK_T_Attend_T_Emploee" FromRole="T_Attend" ToRole="T_Emploee" />
-        </EntityType>
         <EntityType Name="T_Attend_Day">
           <Key>
             <PropertyRef Name="Emp_Att_D_Id" />
@@ -793,8 +813,8 @@
           <Property Name="Emp_Att_D_State" Type="Boolean" />
           <Property Name="Emp_Att_D_Note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Emp_Att_M_Id" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="T_Attend" Relationship="Self.FK_T_Attend_T_Attend_Day" FromRole="T_Attend_Day" ToRole="T_Attend" />
           <NavigationProperty Name="T_Attend_Month" Relationship="Self.FK_T_Emploeey_Attend_Day_T_Emploeey_Attend_Month" FromRole="T_Attend_Day" ToRole="T_Attend_Month" />
+          <NavigationProperty Name="T_Attend" Relationship="SMART_HR_DB_2023Model.FK_T_Attend_T_Attend_Day" FromRole="T_Attend_Day" ToRole="T_Attend" />
         </EntityType>
         <EntityType Name="T_Attend_Month">
           <Key>
@@ -943,7 +963,6 @@
           <Property Name="Emp_St_Id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Emp_Mp_Id" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Company_Id" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="T_Attend" Relationship="Self.FK_T_Attend_T_Emploee" FromRole="T_Emploee" ToRole="T_Attend" />
           <NavigationProperty Name="T_Companey" Relationship="Self.FK_T_Emploee_T_Companey" FromRole="T_Emploee" ToRole="T_Companey" />
           <NavigationProperty Name="T_Employee_Map" Relationship="Self.FK_T_Emploee_T_Employee_Map" FromRole="T_Emploee" ToRole="T_Employee_Map" />
           <NavigationProperty Name="T_Employee_State" Relationship="Self.FK_T_Emploee_T_Employee_State" FromRole="T_Emploee" ToRole="T_Employee_State" />
@@ -953,6 +972,8 @@
           <NavigationProperty Name="T_Employee_File" Relationship="Self.FK_T_Employee_File_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_File" />
           <NavigationProperty Name="T_Employee_Retriment" Relationship="Self.FK_T_Employee_Retriment_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_Retriment" />
           <NavigationProperty Name="T_Employee_Social" Relationship="SMART_HR_DB_2023Model.FK_T_Employee_Social_T_Emploee" FromRole="T_Emploee" ToRole="T_Employee_Social" />
+          <NavigationProperty Name="T_Attend" Relationship="SMART_HR_DB_2023Model.FK_T_Attend_T_Emploee" FromRole="T_Emploee" ToRole="T_Attend" />
+          <Property Name="Emp_S_Date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="T_Employee_Certificate">
           <Key>
@@ -1064,6 +1085,11 @@
           <Property Name="Emp_Sal_Id" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="T_Emploee" Relationship="Self.FK_T_Emploeey_Month_Salarey_T_Emploee" FromRole="T_Salarey_Month" ToRole="T_Emploee" />
           <NavigationProperty Name="T_Salary_Master" Relationship="Self.FK_T_Emploeey_Month_Salarey_T_Emploeey_Salary_Master" FromRole="T_Salarey_Month" ToRole="T_Salary_Master" />
+          <Property Name="Emp_Mnth_Sal_Day_Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Emp_Mnth_Sal_Bonas_Day" Type="Int32" />
+          <Property Name="Emp_Mnth_Sal_Minous_Day" Type="Int32" />
+          <Property Name="Emp_Mnth_Sal_Adv" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Mnth_Sal_Debt" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="T_Salary_Master">
           <Key>
@@ -1078,6 +1104,9 @@
           <Property Name="Emp_Mp_Id" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="T_Employee_Map" Relationship="Self.FK_T_Emploeey_Salary_Master_T_Employee_Map" FromRole="T_Salary_Master" ToRole="T_Employee_Map" />
           <NavigationProperty Name="T_Salarey_Month" Relationship="Self.FK_T_Emploeey_Month_Salarey_T_Emploeey_Salary_Master" FromRole="T_Salary_Master" ToRole="T_Salarey_Month" />
+          <Property Name="Emp_Sal_M_Bonas" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Sal_M_Minos" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Emp_Sal_Net" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="T_User_Type">
           <Key>
@@ -1105,34 +1134,6 @@
           <NavigationProperty Name="T_Companey" Relationship="Self.FK_T_Users_T_Companey" FromRole="T_Users" ToRole="T_Companey" />
           <NavigationProperty Name="T_User_Type" Relationship="SMART_HR_DB_2023Model.FK_T_Users_T_User_Type" FromRole="T_Users" ToRole="T_User_Type" />
         </EntityType>
-        <Association Name="FK_T_Attend_T_Attend_Day">
-          <End Role="T_Attend_Day" Type="Self.T_Attend_Day" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="T_Attend" Type="Self.T_Attend" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Attend_Day">
-              <PropertyRef Name="Emp_Att_D_Id" />
-            </Principal>
-            <Dependent Role="T_Attend">
-              <PropertyRef Name="Emp_Att_D_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_T_Attend_T_Emploee">
-          <End Role="T_Emploee" Type="Self.T_Emploee" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="T_Attend" Type="Self.T_Attend" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_Emploee">
-              <PropertyRef Name="Emp_Id" />
-            </Principal>
-            <Dependent Role="T_Attend">
-              <PropertyRef Name="Emp_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_T_Emploeey_Attend_Day_T_Emploeey_Attend_Month">
           <End Role="T_Attend_Month" Type="Self.T_Attend_Month" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1410,7 +1411,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SMART_HR_DB_2023Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="T_Attend" EntityType="Self.T_Attend" />
           <EntitySet Name="T_Attend_Day" EntityType="Self.T_Attend_Day" />
           <EntitySet Name="T_Attend_Month" EntityType="Self.T_Attend_Month" />
           <EntitySet Name="T_Companey" EntityType="Self.T_Companey" />
@@ -1430,14 +1430,6 @@
           <EntitySet Name="T_Salary_Master" EntityType="Self.T_Salary_Master" />
           <EntitySet Name="T_User_Type" EntityType="Self.T_User_Type" />
           <EntitySet Name="T_Users" EntityType="Self.T_Users" />
-          <AssociationSet Name="FK_T_Attend_T_Attend_Day" Association="Self.FK_T_Attend_T_Attend_Day">
-            <End Role="T_Attend_Day" EntitySet="T_Attend_Day" />
-            <End Role="T_Attend" EntitySet="T_Attend" />
-          </AssociationSet>
-          <AssociationSet Name="FK_T_Attend_T_Emploee" Association="Self.FK_T_Attend_T_Emploee">
-            <End Role="T_Emploee" EntitySet="T_Emploee" />
-            <End Role="T_Attend" EntitySet="T_Attend" />
-          </AssociationSet>
           <AssociationSet Name="FK_T_Emploeey_Attend_Day_T_Emploeey_Attend_Month" Association="Self.FK_T_Emploeey_Attend_Day_T_Emploeey_Attend_Month">
             <End Role="T_Attend_Month" EntitySet="T_Attend_Month" />
             <End Role="T_Attend_Day" EntitySet="T_Attend_Day" />
@@ -1531,6 +1523,16 @@
             <End Role="T_Emploee" EntitySet="T_Emploee" />
             <End Role="T_Employee_Social" EntitySet="T_Employee_Social" />
           </AssociationSet>
+          <EntitySet Name="T_Attend" EntityType="SMART_HR_DB_2023Model.T_Attend" />
+          <AssociationSet Name="FK_T_Attend_T_Attend_Day" Association="SMART_HR_DB_2023Model.FK_T_Attend_T_Attend_Day">
+            <End Role="T_Attend_Day" EntitySet="T_Attend_Day" />
+            <End Role="T_Attend" EntitySet="T_Attend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Attend_T_Emploee" Association="SMART_HR_DB_2023Model.FK_T_Attend_T_Emploee">
+            <End Role="T_Emploee" EntitySet="T_Emploee" />
+            <End Role="T_Attend" EntitySet="T_Attend" />
+          </AssociationSet>
+          <EntitySet Name="V_Emp_Month_Atend_Salarey" EntityType="SMART_HR_DB_2023Model.V_Emp_Month_Atend_Salarey" />
         </EntityContainer>
         <Association Name="FK_T_Users_T_User_Type">
           <End Type="SMART_HR_DB_2023Model.T_User_Type" Role="T_User_Type" Multiplicity="0..1" />
@@ -1575,26 +1577,68 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="T_Attend">
+          <Key>
+            <PropertyRef Name="Emp_Att_Id" />
+          </Key>
+          <Property Name="Emp_Att_Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_Att_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Att_Date" Type="DateTime" Precision="0" />
+          <Property Name="Emp_Att_Houer" Type="Int32" />
+          <Property Name="Emp_Att_State" Type="Boolean" />
+          <Property Name="Emp_Att_Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Emp_Id" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Emp_Att_D_Id" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="T_Attend_Day" Relationship="SMART_HR_DB_2023Model.FK_T_Attend_T_Attend_Day" FromRole="T_Attend" ToRole="T_Attend_Day" />
+          <NavigationProperty Name="T_Emploee" Relationship="SMART_HR_DB_2023Model.FK_T_Attend_T_Emploee" FromRole="T_Attend" ToRole="T_Emploee" />
+        </EntityType>
+        <Association Name="FK_T_Attend_T_Attend_Day">
+          <End Type="SMART_HR_DB_2023Model.T_Attend_Day" Role="T_Attend_Day" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SMART_HR_DB_2023Model.T_Attend" Role="T_Attend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Attend_Day">
+              <PropertyRef Name="Emp_Att_D_Id" />
+            </Principal>
+            <Dependent Role="T_Attend">
+              <PropertyRef Name="Emp_Att_D_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Attend_T_Emploee">
+          <End Type="SMART_HR_DB_2023Model.T_Emploee" Role="T_Emploee" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SMART_HR_DB_2023Model.T_Attend" Role="T_Attend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Emploee">
+              <PropertyRef Name="Emp_Id" />
+            </Principal>
+            <Dependent Role="T_Attend">
+              <PropertyRef Name="Emp_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_Emp_Month_Atend_Salarey">
+          <Key>
+            <PropertyRef Name="Emp_Att_M_Id" />
+            <PropertyRef Name="Emp_Id" />
+          </Key>
+          <Property Name="Emp_Att_M_Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Emp_Att_M_Month_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yeaar" Type="Int32" />
+          <Property Name="Emp_Att_M_Day_Count" Type="Int32" />
+          <Property Name="Emp_Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="emp_name" Type="String" MaxLength="201" FixedLength="false" Unicode="true" />
+          <Property Name="total_hours" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SMART_HR_DB_2023ModelStoreContainer" CdmEntityContainer="SMART_HR_DB_2023Entities">
-          <EntitySetMapping Name="T_Attend">
-            <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Attend">
-              <MappingFragment StoreEntitySet="T_Attend">
-                <ScalarProperty Name="Emp_Att_Id" ColumnName="Emp_Att_Id" />
-                <ScalarProperty Name="Emp_Att_Code" ColumnName="Emp_Att_Code" />
-                <ScalarProperty Name="Emp_Att_Date" ColumnName="Emp_Att_Date" />
-                <ScalarProperty Name="Emp_Att_Houer" ColumnName="Emp_Att_Houer" />
-                <ScalarProperty Name="Emp_Att_State" ColumnName="Emp_Att_State" />
-                <ScalarProperty Name="Emp_Att_Note" ColumnName="Emp_Att_Note" />
-                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
-                <ScalarProperty Name="Emp_Att_D_Id" ColumnName="Emp_Att_D_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="T_Attend_Day">
             <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Attend_Day">
               <MappingFragment StoreEntitySet="T_Attend_Day">
@@ -1725,6 +1769,7 @@
           <EntitySetMapping Name="T_Emploee">
             <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Emploee">
               <MappingFragment StoreEntitySet="T_Emploee">
+                <ScalarProperty Name="Emp_S_Date" ColumnName="Emp_S_Date" />
                 <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
                 <ScalarProperty Name="Emp_Code" ColumnName="Emp_Code" />
                 <ScalarProperty Name="Emp_F_Name" ColumnName="Emp_F_Name" />
@@ -1836,6 +1881,11 @@
           <EntitySetMapping Name="T_Salarey_Month">
             <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Salarey_Month">
               <MappingFragment StoreEntitySet="T_Salarey_Month">
+                <ScalarProperty Name="Emp_Mnth_Sal_Debt" ColumnName="Emp_Mnth_Sal_Debt" />
+                <ScalarProperty Name="Emp_Mnth_Sal_Adv" ColumnName="Emp_Mnth_Sal_Adv" />
+                <ScalarProperty Name="Emp_Mnth_Sal_Minous_Day" ColumnName="Emp_Mnth_Sal_Minous_Day" />
+                <ScalarProperty Name="Emp_Mnth_Sal_Bonas_Day" ColumnName="Emp_Mnth_Sal_Bonas_Day" />
+                <ScalarProperty Name="Emp_Mnth_Sal_Day_Price" ColumnName="Emp_Mnth_Sal_Day_Price" />
                 <ScalarProperty Name="Emp_Mnth_Sal_Id" ColumnName="Emp_Mnth_Sal_Id" />
                 <ScalarProperty Name="Emp_Mnth_Sal_Code" ColumnName="Emp_Mnth_Sal_Code" />
                 <ScalarProperty Name="Emp_Mnth_Sal_Name" ColumnName="Emp_Mnth_Sal_Name" />
@@ -1855,6 +1905,9 @@
           <EntitySetMapping Name="T_Salary_Master">
             <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Salary_Master">
               <MappingFragment StoreEntitySet="T_Salary_Master">
+                <ScalarProperty Name="Emp_Sal_Net" ColumnName="Emp_Sal_Net" />
+                <ScalarProperty Name="Emp_Sal_M_Minos" ColumnName="Emp_Sal_M_Minos" />
+                <ScalarProperty Name="Emp_Sal_M_Bonas" ColumnName="Emp_Sal_M_Bonas" />
                 <ScalarProperty Name="Emp_Sal_Id" ColumnName="Emp_Sal_Id" />
                 <ScalarProperty Name="Emp_Sal_Code" ColumnName="Emp_Sal_Code" />
                 <ScalarProperty Name="Emp_Sal_Name" ColumnName="Emp_Sal_Name" />
@@ -1904,6 +1957,33 @@
                 <ScalarProperty Name="Emp_Ss_Number" ColumnName="Emp_Ss_Number" />
                 <ScalarProperty Name="Emp_Ss_Code" ColumnName="Emp_Ss_Code" />
                 <ScalarProperty Name="Emp_Ss_ID" ColumnName="Emp_Ss_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_Attend">
+            <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.T_Attend">
+              <MappingFragment StoreEntitySet="T_Attend">
+                <ScalarProperty Name="Emp_Att_D_Id" ColumnName="Emp_Att_D_Id" />
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Emp_Att_Note" ColumnName="Emp_Att_Note" />
+                <ScalarProperty Name="Emp_Att_State" ColumnName="Emp_Att_State" />
+                <ScalarProperty Name="Emp_Att_Houer" ColumnName="Emp_Att_Houer" />
+                <ScalarProperty Name="Emp_Att_Date" ColumnName="Emp_Att_Date" />
+                <ScalarProperty Name="Emp_Att_Code" ColumnName="Emp_Att_Code" />
+                <ScalarProperty Name="Emp_Att_Id" ColumnName="Emp_Att_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_Emp_Month_Atend_Salarey">
+            <EntityTypeMapping TypeName="SMART_HR_DB_2023Model.V_Emp_Month_Atend_Salarey">
+              <MappingFragment StoreEntitySet="V_Emp_Month_Atend_Salarey">
+                <ScalarProperty Name="total_hours" ColumnName="total_hours" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Emp_Att_M_Day_Count" ColumnName="Emp_Att_M_Day_Count" />
+                <ScalarProperty Name="yeaar" ColumnName="yeaar" />
+                <ScalarProperty Name="Emp_Att_M_Month_Name" ColumnName="Emp_Att_M_Month_Name" />
+                <ScalarProperty Name="Emp_Att_M_Id" ColumnName="Emp_Att_M_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

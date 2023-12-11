@@ -13,6 +13,7 @@ namespace HR_DataBase
 ثم ملف الانتتي .context.tt
 ثم ملف الانتتي .context.cs */
 {
+ 
     public class ClsCommander<TEntity> : ICommander<TEntity> where TEntity : class
     {
         public static SMART_HR_DB_2023Entities Context = new SMART_HR_DB_2023Entities();
@@ -20,6 +21,11 @@ namespace HR_DataBase
         {
             Context.Set<TEntity>().Remove(entity);
             Context.SaveChanges();
+        }
+
+        public void Detached_Data(TEntity entity)
+        {
+            Context.Entry(entity).State = System.Data.Entity.EntityState.Detached;
         }
 
         public IEnumerable<TEntity> Get_All()

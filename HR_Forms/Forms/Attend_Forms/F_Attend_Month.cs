@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,14 +47,14 @@ namespace HR_Forms.Forms.Attend_Forms
 
         private void load_month_data()
         {
-            Emp_Att_M_CodeTextEdit.Text = Emp_Att_M_IdTextEdit.Text + " "
+           Emp_Att_M_CodeTextEdit.Text = Emp_Att_M_IdTextEdit.Text + " "
                 + Emp_Att_M_DateDateEdit.DateTime.Month.ToString("00") +
-                Emp_Att_M_DateDateEdit.DateTime.Year.ToString();
+               Emp_Att_M_DateDateEdit.DateTime.Year.ToString();
 
-            Emp_Att_M_Month_NameTextEdit.Text = Emp_Att_M_DateDateEdit.DateTime.ToString("MMM");
-            Emp_Att_M_Month_NumTextEdit.Text = Emp_Att_M_DateDateEdit.DateTime.ToString("MM");
-            Emp_Att_M_Month_NameTextEdit.Text = Emp_Att_M_DateDateEdit.DateTime.ToString("MMM");
-            Emp_Att_M_Day_CountTextEdit.Text = (DateTime.DaysInMonth(Emp_Att_M_DateDateEdit.DateTime.Year, Emp_Att_M_DateDateEdit.DateTime.Month) * 8).ToString();
+           Emp_Att_M_Month_NameTextEdit.Text = Emp_Att_M_DateDateEdit.DateTime.ToString("MMM");
+           Emp_Att_M_Month_NumTextEdit.Text = Emp_Att_M_DateDateEdit.DateTime.ToString("MM");
+           Emp_Att_M_Month_NameTextEdit.Text = Emp_Att_M_DateDateEdit.DateTime.ToString("MMM");
+           Emp_Att_M_Day_CountTextEdit.Text = (DateTime.DaysInMonth(Emp_Att_M_DateDateEdit.DateTime.Year, Emp_Att_M_DateDateEdit.DateTime.Month) * 8).ToString();
         }
 
         public override void Insert_Data()
@@ -156,14 +155,14 @@ namespace HR_Forms.Forms.Attend_Forms
 
         public void Fill_Controls()
         {
-            Emp_Att_M_IdTextEdit.Text = TF_Att_Month.Emp_Att_M_Id.ToString();
-            Emp_Att_M_CodeTextEdit.Text = TF_Att_Month.Emp_Att_M_Code;
-            Emp_Att_M_DateDateEdit.DateTime = Convert.ToDateTime(TF_Att_Month.Emp_Att_M_Date);
-            Emp_Att_M_Month_NumTextEdit.Text = TF_Att_Month.Emp_Att_M_Month_Num.ToString();
-            Emp_Att_M_Day_CountTextEdit.Text = TF_Att_Month.Emp_Att_M_Day_Count.ToString();
-            Emp_Att_M_Month_NameTextEdit.Text = TF_Att_Month.Emp_Att_M_Month_Name;
-            Emp_Att_M_StateCheckEdit.Checked = Convert.ToBoolean(TF_Att_Month.Emp_Att_M_State);
-            Emp_Att_M_NoteMemoEdit.Text = TF_Att_Month.Emp_Att_M_Note;
+           Emp_Att_M_IdTextEdit.Text = TF_Att_Month.Emp_Att_M_Id.ToString();
+           Emp_Att_M_CodeTextEdit.Text = TF_Att_Month.Emp_Att_M_Code;
+           Emp_Att_M_DateDateEdit.DateTime = Convert.ToDateTime(TF_Att_Month.Emp_Att_M_Date);
+           Emp_Att_M_Month_NumTextEdit.Text = TF_Att_Month.Emp_Att_M_Month_Num.ToString();
+           Emp_Att_M_Day_CountTextEdit.Text = TF_Att_Month.Emp_Att_M_Day_Count.ToString();
+           Emp_Att_M_Month_NameTextEdit.Text = TF_Att_Month.Emp_Att_M_Month_Name;
+           Emp_Att_M_StateCheckEdit.Checked = Convert.ToBoolean(TF_Att_Month.Emp_Att_M_State);
+           Emp_Att_M_NoteMemoEdit.Text = TF_Att_Month.Emp_Att_M_Note;
 
         }
         public void Fill_Entitey()
@@ -200,7 +199,7 @@ namespace HR_Forms.Forms.Attend_Forms
         private void Set_Auto_Id()
         {
             var max_id = cmdAttMonth.Get_All().Where(c_id => c_id.Emp_Att_M_Id == cmdAttMonth.Get_All().Max(max => max.Emp_Att_M_Id)).FirstOrDefault();
-            Emp_Att_M_IdTextEdit.Text = max_id == null ? "1" : (max_id.Emp_Att_M_Id + 1).ToString();
+           Emp_Att_M_IdTextEdit.Text = max_id == null ? "1" : (max_id.Emp_Att_M_Id + 1).ToString();
             // Emp_Mp_CodeTextEdit.Text = Emp_Mp_IdTextEdit.Text;
         }
         private void Get_Row_ID(int Row_Id)
@@ -234,12 +233,12 @@ namespace HR_Forms.Forms.Attend_Forms
                 Delete_Data();
         }
 
-        private void Emp_Att_M_DateDateEdit_EditValueChanged(object sender, EventArgs e)
+        private void Emp_Att_DateDateEdit_EditValueChanged(object sender, EventArgs e)
         {
             load_month_data();
         }
 
-        private void Emp_Att_M_IdTextEdit_EditValueChanged(object sender, EventArgs e)
+        private void Emp_Att_IdTextEdit_EditValueChanged(object sender, EventArgs e)
         {
 
         }

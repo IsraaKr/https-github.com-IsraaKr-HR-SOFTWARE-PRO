@@ -149,7 +149,6 @@
             this.Emp_Att_M_IdTextEdit.Size = new System.Drawing.Size(59, 20);
             this.Emp_Att_M_IdTextEdit.StyleController = this.dataLayoutControl1;
             this.Emp_Att_M_IdTextEdit.TabIndex = 4;
-            this.Emp_Att_M_IdTextEdit.EditValueChanged += new System.EventHandler(this.Emp_Att_M_IdTextEdit_EditValueChanged);
             // 
             // Emp_Att_M_DateDateEdit
             // 
@@ -164,7 +163,6 @@
             this.Emp_Att_M_DateDateEdit.Size = new System.Drawing.Size(137, 20);
             this.Emp_Att_M_DateDateEdit.StyleController = this.dataLayoutControl1;
             this.Emp_Att_M_DateDateEdit.TabIndex = 5;
-            this.Emp_Att_M_DateDateEdit.EditValueChanged += new System.EventHandler(this.Emp_Att_M_DateDateEdit_EditValueChanged);
             // 
             // Emp_Att_M_Month_NumTextEdit
             // 

@@ -131,6 +131,9 @@
     <Compile Include="T_User_Type.cs">
       <DependentUpon>HR_EDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="V_Emp_Month_Atend_Salarey.cs">
+      <DependentUpon>HR_EDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="HR_EDB.edmx">

@@ -32,11 +32,11 @@ namespace HR_Forms.Forms.Employee_Forms
         #region override
         public override void Get_Data(string status_mess)
         {
-            if (TF_Emploee != null)
-            {
-                try
-                {
-                    clear_data(this.Controls);
+            //if (TF_Emploee != null)
+            //{
+                //try
+                //{
+                 //   clear_data(this.Controls);
                     Is_Double_Click = false;
                     cmdEmploeey = new ClsCommander<T_Emploee>();
                     cmdEmpState = new ClsCommander<T_Employee_State>();
@@ -46,12 +46,12 @@ namespace HR_Forms.Forms.Employee_Forms
 
                     GetEmp_Map_Data();
                     GetEmp_State_Data();
-                }
-                catch (Exception ex)
-                {
-                    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
-                }
-            }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Get_Data(ex.InnerException.InnerException.ToString() + "/" + ex.Message);
+                //}
+         //   }
         }
         public override void Insert_Data()
         {

@@ -25,7 +25,6 @@ namespace HR_DataBase
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<T_Attend> T_Attend { get; set; }
         public virtual DbSet<T_Attend_Day> T_Attend_Day { get; set; }
         public virtual DbSet<T_Attend_Month> T_Attend_Month { get; set; }
         public virtual DbSet<T_Companey> T_Companey { get; set; }
@@ -46,5 +45,7 @@ namespace HR_DataBase
         public virtual DbSet<T_User_Type> T_User_Type { get; set; }
         public virtual DbSet<T_Users> T_Users { get; set; }
         public virtual DbSet<T_Employee_Social> T_Employee_Social { get; set; }
+        public virtual DbSet<T_Attend> T_Attend { get; set; }
+        public virtual DbSet<V_Emp_Month_Atend_Salarey> V_Emp_Month_Atend_Salarey { get; set; }
     }
 }

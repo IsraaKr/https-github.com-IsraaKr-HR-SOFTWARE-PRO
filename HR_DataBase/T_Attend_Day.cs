@@ -28,8 +28,8 @@ namespace HR_DataBase
         public string Emp_Att_D_Note { get; set; }
         public Nullable<decimal> Emp_Att_M_Id { get; set; }
     
+        public virtual T_Attend_Month T_Attend_Month { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Attend> T_Attend { get; set; }
-        public virtual T_Attend_Month T_Attend_Month { get; set; }
     }
 }

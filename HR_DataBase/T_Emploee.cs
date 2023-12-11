@@ -17,13 +17,13 @@ namespace HR_DataBase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public T_Emploee()
         {
-            this.T_Attend = new HashSet<T_Attend>();
             this.T_Salarey_Month = new HashSet<T_Salarey_Month>();
             this.T_Employee_Certificate = new HashSet<T_Employee_Certificate>();
             this.T_Employee_Experiance = new HashSet<T_Employee_Experiance>();
             this.T_Employee_File = new HashSet<T_Employee_File>();
             this.T_Employee_Retriment = new HashSet<T_Employee_Retriment>();
             this.T_Employee_Social = new HashSet<T_Employee_Social>();
+            this.T_Attend = new HashSet<T_Attend>();
         }
     
         public decimal Emp_Id { get; set; }
@@ -43,9 +43,8 @@ namespace HR_DataBase
         public Nullable<decimal> Emp_St_Id { get; set; }
         public Nullable<decimal> Emp_Mp_Id { get; set; }
         public Nullable<decimal> Company_Id { get; set; }
+        public Nullable<System.DateTime> Emp_S_Date { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<T_Attend> T_Attend { get; set; }
         public virtual T_Companey T_Companey { get; set; }
         public virtual T_Employee_Map T_Employee_Map { get; set; }
         public virtual T_Employee_State T_Employee_State { get; set; }
@@ -61,5 +60,7 @@ namespace HR_DataBase
         public virtual ICollection<T_Employee_Retriment> T_Employee_Retriment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<T_Employee_Social> T_Employee_Social { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<T_Attend> T_Attend { get; set; }
     }
 }

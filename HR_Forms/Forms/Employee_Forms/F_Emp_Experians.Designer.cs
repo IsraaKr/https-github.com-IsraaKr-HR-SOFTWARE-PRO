@@ -170,6 +170,7 @@
             this.Emp_Exp_DateDateEdit.Size = new System.Drawing.Size(213, 20);
             this.Emp_Exp_DateDateEdit.StyleController = this.dataLayoutControl1;
             this.Emp_Exp_DateDateEdit.TabIndex = 7;
+            this.Emp_Exp_DateDateEdit.EditValueChanged += new System.EventHandler(this.Emp_Exp_DateDateEdit_EditValueChanged);
             // 
             // Emp_Exp_LengthTextEdit
             // 
@@ -383,6 +384,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dataLayoutControl1);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "F_Emp_Experians";
             this.Text = "F_Emp_Experians";
             this.Controls.SetChildIndex(this.dataLayoutControl1, 0);

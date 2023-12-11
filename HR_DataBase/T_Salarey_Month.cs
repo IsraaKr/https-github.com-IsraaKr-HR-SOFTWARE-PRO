@@ -27,6 +27,11 @@ namespace HR_DataBase
         public string Emp_Mnth_Sal_Note { get; set; }
         public Nullable<decimal> Emp_Id { get; set; }
         public Nullable<decimal> Emp_Sal_Id { get; set; }
+        public Nullable<decimal> Emp_Mnth_Sal_Day_Price { get; set; }
+        public Nullable<int> Emp_Mnth_Sal_Bonas_Day { get; set; }
+        public Nullable<int> Emp_Mnth_Sal_Minous_Day { get; set; }
+        public Nullable<decimal> Emp_Mnth_Sal_Adv { get; set; }
+        public Nullable<decimal> Emp_Mnth_Sal_Debt { get; set; }
     
         public virtual T_Emploee T_Emploee { get; set; }
         public virtual T_Salary_Master T_Salary_Master { get; set; }

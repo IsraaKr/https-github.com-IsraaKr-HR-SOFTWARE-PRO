@@ -4,10 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ebc33e6c51094c81a383ce76a4362bfa" Name="Diagram1" ZoomLevel="54">
-        <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Attend" Width="1.5" PointX="3.375" PointY="0.75" />
+      <Diagram DiagramId="ebc33e6c51094c81a383ce76a4362bfa" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Attend_Day" Width="1.5" PointX="1.125" PointY="5.875" />
-        <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Attend_T_Attend_Day" />
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Attend_Month" Width="1.5" PointX="1.125" PointY="9.875" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Emploeey_Attend_Day_T_Emploeey_Attend_Month" />
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Companey" Width="1.5" PointX="3.375" PointY="4.75" />
@@ -24,7 +22,6 @@
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Customer_Bill_T_Customer_Invoice" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Invoice_T_Customer_Contract" />
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Emploee" Width="1.5" PointX="5.625" PointY="9.75" />
-        <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Attend_T_Emploee" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Emploee_T_Companey" />
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Employee_Certificate" Width="1.5" PointX="7.875" PointY="11.5" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Employee_Certificate_T_Emploee" />
@@ -40,7 +37,7 @@
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Employee_State" Width="1.5" PointX="5.625" PointY="21.5" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Employee_State_T_Companey" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Emploee_T_Employee_State" />
-        <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Salarey_Month" Width="1.5" PointX="7.875" PointY="23.875" />
+        <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Salarey_Month" Width="2.875" PointX="7.875" PointY="23.875" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Emploeey_Month_Salarey_T_Emploee" />
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Salary_Master" Width="1.5" PointX="7.875" PointY="29.5" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Emploeey_Salary_Master_T_Employee_Map" />
@@ -51,6 +48,10 @@
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Users_T_User_Type" />
         <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Employee_Social" Width="1.5" PointX="7.875" PointY="33.25" />
         <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Employee_Social_T_Emploee" />
+        <EntityTypeShape EntityType="SMART_HR_DB_2023Model.T_Attend" Width="1.5" PointX="10.875" PointY="10.5" />
+        <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Attend_T_Attend_Day" />
+        <AssociationConnector Association="SMART_HR_DB_2023Model.FK_T_Attend_T_Emploee" />
+        <EntityTypeShape EntityType="SMART_HR_DB_2023Model.V_Emp_Month_Atend_Salarey" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
